@@ -1,0 +1,70 @@
+name: Pull Request Closed
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+
+  update_github_pages:
+    name: Update the GitHub Page
+    runs-on: macos-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+
+      # checkout repo so can access the bash script
+      - uses: actions/checkout@v4
+
+      # create the "mysite/" directory
+      - name: Create the mysite/ directory
+        run: mkdir mysite
+
+      # download and extract drafts.tgz
+      - name: Download and extract drafts
+        run: |
+          cd mysite
+          curl -O https://netmod-wg.github.io/yang2/drafts.tgz
+          tar -xzvf drafts.tgz
+          rm drafts.tgz
+
+      # if merged...
+      - name: If merged, move compiled artifacts to 'main'
+        if: github.event.pull_request.merged == true
+        run: |
+          rm -rf mysite/main
+          mv mysite/${{github.head_ref}} mysite/main
+
+      # if not merged...
+      - name: If not merged, just delete the branch dir
+        if: github.event.pull_request.merged == false
+        run: |
+          rm -rf mysite/${{github.head_ref}}
+
+      # create index.html
+      - name: Create mysite/index.html
+        run: |
+          chmod +x .github/workflows/gen_index_html.sh
+          .github/workflows/gen_index_html.sh "${{github.event.pull_request.number}}" "${{github.event.pull_request.title}}"  "${{github.event.pull_request.head.ref}}"
+
+      # recreate the drafts.tgz
+      - name: Recreate drafts.tgz
+        run: |
+          cd mysite
+          tar -czvf drafts.tgz */
+
+      # upload site to github.io
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./mysite"
+
+      # deploy site to github.io
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

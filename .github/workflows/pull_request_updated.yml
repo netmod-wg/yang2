@@ -1,0 +1,213 @@
+name: Pull Request Opened/Updated
+
+on:
+  pull_request:
+    #types: [ opened, synchronize, reopened ]
+
+jobs:
+  add_checklist:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: checklist
+        env:
+          COMMENT: |
+            # All of the following must be verified before merging to `main`.
+              - [ ] Updated "Changes Since RFC 7950" section, or N/A?
+              - [ ] Updated "IANA Considerations" section, or N/A?
+              - [ ] Updated "Security Considerations" section, or N/A?
+              - [ ] Updated "Normative/Informational References" sections, or N/A?
+              - [ ] Updated "Acknowledgements" section, or N/A? (Not GitHub users)
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr comment https://github.com/netmod-wg/yang2/pull/${{github.event.number}} --body "$COMMENT"
+
+  xml2rfc:
+    name: Run xml2rfc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: generate authors.txt
+        run: |
+          chmod +x .github/workflows/gen_author_list.sh
+          .github/workflows/gen_author_list.sh
+      - name: Install xml2rfc
+        run: |
+          pip install xml2rfc
+          wget https://raw.githubusercontent.com/ietf-tools/rfcfold/master/rfcfold
+          chmod +x rfcfold
+      - name: Run "make"
+        run: make
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-artifacts
+          path: draft-yn-netmod-*-[0-9][0-9].*
+
+# DISABLED because unable to get it to work (rfclint maintained?)
+#  rfclint:
+#    name: RFC Lint
+#    runs-on: macos-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#        with:
+#          ref: ${{ github.event.pull_request.head.ref }}
+#      - name: Install xmllint
+#        run: |
+#          git clone https://github.com/moonshiner/rfclint.git
+#          cd rfclint
+#          git checkout tjw-fix-setup
+
+  idnits_v2:
+    name: Test with Idnits v2
+    runs-on: ubuntu-latest
+    needs: xml2rfc
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: all-artifacts
+      - name: Install idnits
+        run: |
+          git clone https://github.com/ietf-tools/idnits.git
+          cd idnits
+          git checkout v2
+      - name: Run idnits
+        run: |
+          ./idnits/idnits --verbose draft-yn-netmod-yang2-[0-9][0-9].txt | tee idnits.out
+      - name: Extract summary line
+        run: echo "SUMMARY_LINE=$(cat idnits.out | tail -n 2 | head -n 1)" >> $GITHUB_ENV
+      - name: Test summary line for errors
+        run: |
+          echo "${{env.SUMMARY_LINE}}" | grep -q "0 errors" || {
+            echo "::error::Idnits returned errors."
+            exit 1
+          }
+      - name: Test summary line for changes
+        run: |
+          echo "${{env.SUMMARY_LINE}}" | grep -qF "0 flaws (~~), 3 warnings (==), 7 comments (--)" || {
+            echo "::error::Idnits summary line different - examine why (fix workflow if needed)"
+            exit 1
+          }
+
+# DISABLED because idnits-v3 flags non-issues
+#  idnits_v3:
+#    name: Test with Idnits v3
+#    runs-on: macos-latest
+#    needs: xml2rfc
+#    steps:
+#      - name: Download a single artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: draft-yn-netmod-yang2-[0-9][0-9].txt
+#      - name: Install node
+#        run: |
+#          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+#          export NVM_DIR="$HOME/.nvm"
+#          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#          nvm install 20
+#          #https://nodejs.org/dist/v20.12.2/node-v20.12.2-darwin-x64.tar.gz
+#      - name: Install idnits
+#        run: |
+#          npm install -g @ietf-tools/idnits
+#      - name: Run idnits
+#        run: |
+#          idnits draft-yn-netmod-yang2-[0-9][0-9].txt  | tee idnits.out
+#      - name: Test idnits Output
+#        run: |
+#            grep -q "Summary: 1 error" idnits.out
+#            if [[ $? -ne 0 ]]; then
+#              echo "Idnits returned errors."
+#              exit 1
+#            fi
+#
+
+  update_github_pages:
+    name: Update the GitHub Page
+    runs-on: ubuntu-latest
+    needs: [xml2rfc, idnits_v2]
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+
+      # checkout repo so can access the bash script
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      # create the "mysite/" directory
+      - name: Create the mysite/ directory
+        run: mkdir mysite
+
+      # download and extract drafts.tgz
+      - name: Download and extract drafts
+        run: |
+          cd mysite
+          curl -O https://netmod-wg.github.io/yang2/drafts.tgz
+          file drafts.tgz
+          file drafts.tgz | grep "gzip compressed data" && {
+              tar -xzvf drafts.tgz
+          }
+          rm drafts.tgz
+
+      # create the "mysite/<branch>/" directory, in case it's not there already
+      - name: Create the mysite/<branch>/ directory
+        run: mkdir -p mysite/${{github.head_ref}}
+
+      # download the just-built artifacts
+      - name: Download built artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: all-artifacts
+
+      # mv all artifacts into the mysite/<branch>/ directory
+      - name: Move drafts into branch dir
+        run: |
+          mv draft-yn-netmod-*-[0-9][0-9].* mysite/${{github.head_ref}}/
+          mv rfc7950.* mysite/${{github.head_ref}}/
+
+      # stash some metadata
+      - name: Stash some metadata
+        run: |
+          echo "${{github.event.pull_request}}"
+          echo "NUMBER: ${{github.event.pull_request.number}}" > mysite/${{github.head_ref}}/metadata.txt
+          echo "TITLE: ${{github.event.pull_request.title}}" >> mysite/${{github.head_ref}}/metadata.txt
+          echo "DATE: $(date +%Y-%m-%dT%H:%M:%SZ)" >> mysite/${{github.head_ref}}/metadata.txt
+          echo "BASE: ${{github.base_ref}}" >> mysite/${{github.head_ref}}/metadata.txt
+
+      # delete the artifacts
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: all-artifacts
+
+      # create index.html
+      - name: Create mysite/index.html
+        run: |
+          chmod +x .github/workflows/gen_index_html.sh
+          .github/workflows/gen_index_html.sh "${{github.event.pull_request.number}}" "${{github.event.pull_request.title}}"  "${{github.event.pull_request.head.ref}}"
+
+      # recreate the drafts.tgz
+      - name: Recreate drafts.tgz
+        run: |
+          cd mysite
+          tar -czvf drafts.tgz */
+          mkdir _test_
+          cd _test_
+          tar -xzvf ../drafts.tgz
+
+      # upload site to github.io
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./mysite"
+
+      # deploy site to github.io
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -60,7 +60,7 @@ for branch in $SORTED; do
   echo "    <td nowrap class=\"bg\"> <table> <tr> <td nowrap><a href=\"$branch/draft-yn-netmod-yang2-00.html\">html</a> / <a href=\"$branch/draft-yn-netmod-yang2-00.txt\">text</a> / <a href=\"$branch/draft-yn-netmod-yang2-00.xml\">xml</a></td> </tr>  </table> </td>" >> index.html
 
   if [ $branch = "main" ]; then
-    echo "    <td nowrap class=\"bg\"><a href=\"https://author-tools.ietf.org/iddiff?url_1=https://netmod-wg.github.io/yang2/main/rfc7950.txt&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-00.txt\">Diff with RFC7950</a><!--<br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-yang2&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-00.txt\"><s>Diff with Datatracker</s></a>--> </td>" >> index.html
+    echo "    <td nowrap class=\"bg\"><a href=\"https://author-tools.ietf.org/iddiff?url_1=https://netmod-wg.github.io/yang2/main/rfc7950.txt&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-00.txt\">Diff with RFC7950</a><br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-yang2&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-00.txt\"><s>Diff with Datatracker</s></a> </td>" >> index.html
   else
     echo "    <td nowrap class=\"bg\"> <a href=\"https://author-tools.ietf.org/api/iddiff?url_1=https://netmod-wg.github.io/yang2/$BASE/draft-yn-netmod-yang2-00.txt&url_2=https://netmod-wg.github.io/yang2/$branch/draft-yn-netmod-yang2-00.txt\">Diff with Main</a> </td>" >> index.html
   fi

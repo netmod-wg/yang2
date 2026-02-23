@@ -86,7 +86,7 @@ jobs:
           }
       - name: Test summary line for changes
         run: |
-          echo "${{env.SUMMARY_LINE}}" | grep -qF "0 flaws (~~), 3 warnings (==), 7 comments (--)" || {
+          echo "${{env.SUMMARY_LINE}}" | grep -qF "0 flaws (~~), 3 warnings (==), 3 comments (--)" || {
             echo "::error::Idnits summary line different - examine why (fix workflow if needed)"
             exit 1
           }

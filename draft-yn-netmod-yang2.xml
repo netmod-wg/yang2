@@ -320,12 +320,11 @@ them as capabilities in the &lt;hello&gt; message.
     </section>
     <section numbered="true" toc="default">
       <name>Key Words</name>
-      <t>
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-"OPTIONAL" in this document are to be interpreted as described in
-BCP 14 <xref target="RFC2119" format="default"/>.
-      </t>
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
+      and "OPTIONAL" in this document are to be interpreted as described
+      in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+      when, and only when, they appear in all capitals, as shown here.</t>
     </section>
     <section anchor="terminology" numbered="true" toc="default">
       <name>Terminology</name>
@@ -1722,7 +1721,7 @@ unique URI <xref target="RFC3986" format="default"/>.  A NETCONF client or serve
 during XML encoding of data.
         </t>
         <t>
-XML namespaces for modules published in RFC streams <xref target="RFC4844" format="default"/>
+XML namespaces for modules published in RFC streams <xref target="RFC8729" format="default"/>
 MUST be assigned by IANA; see Section 14 in <xref target="RFC6020" format="default"/>.
         </t>
         <t>
@@ -2786,7 +2785,7 @@ substatements that holds detailed module information.  The module name
 is an identifier (see <xref target="identifiers" format="default"/>).
         </t>
         <t>
-Names of modules published in RFC streams <xref target="RFC4844" format="default"/>
+Names of modules published in RFC streams <xref target="RFC8729" format="default"/>
 MUST be assigned by IANA; see Section 14 in <xref target="RFC6020" format="default"/>.
         </t>
         <t>
@@ -3285,7 +3284,7 @@ chronological order.
         <section numbered="true" toc="default">
           <name>Usage Example</name>
           <t>
-        The following example relies on <xref target="RFC6991" format="default"/>.
+        The following example relies on <xref target="RFC9911" format="default"/>.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
   module example-system {
@@ -3295,7 +3294,7 @@ chronological order.
 
     import ietf-yang-types {
       prefix "yang";
-      reference "RFC 6991: Common YANG Data Types";
+      reference "RFC 9911: Common YANG Data Types";
     }
 
     include example-types;
@@ -3342,7 +3341,7 @@ submodule information.  The submodule name is an identifier
 (see <xref target="identifiers" format="default"/>).
         </t>
         <t>
-Names of submodules published in RFC streams <xref target="RFC4844" format="default"/> MUST be
+Names of submodules published in RFC streams <xref target="RFC8729" format="default"/> MUST be
 assigned by IANA; see Section 14 in <xref target="RFC6020" format="default"/>.
         </t>
         <t>
@@ -13378,6 +13377,7 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5277.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8525.xml"/>
 
         <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
@@ -13474,13 +13474,13 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4844.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
 
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">

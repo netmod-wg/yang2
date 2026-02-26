@@ -64,9 +64,8 @@ configuration and state data manipulated by the Network Configuration
 Protocol (NETCONF), NETCONF Remote Procedure Calls, and NETCONF
 notifications <xref target="RFC6241" format="default"/>.  Since the publication of YANG
 version 1 <xref target="RFC6020" format="default"/>, YANG has been used or proposed to be
-used for other protocols (e.g., RESTCONF <xref target="RESTCONF" format="default"/> and
-the Constrained Application Protocol (CoAP) Management Interface (CoMI)
-<xref target="CoMI" format="default"/>).  Further, encodings other than XML have been
+used for other protocols (e.g., RESTCONF <xref target="RFC8040" format="default"/> and
+CORECONF <xref target="I-D.ietf-core-comi"/>).  Further, encodings other than XML have been
 proposed (e.g., JSON <xref target="RFC7951" format="default"/>).
       </t>
       <t>
@@ -78,7 +77,7 @@ the data.  Other protocols and encodings are possible but are out of scope
 for this specification.
       </t>
       <t>
-In terms of developing YANG data models, <xref target="YANG-Guidelines" format="default"/>
+In terms of developing YANG data models, <xref target="RFC8407" format="default"/>
 provides some guidelines and recommendations.
       </t>
       <t>
@@ -312,7 +311,7 @@ The following changes have been done to the NETCONF mapping:
           <li>
             <t>
 A server advertises support for YANG 1.1 modules by using
-ietf‑yang-library <xref target="RFC7895" format="default"/> instead of listing
+ietf‑yang-library <xref target="RFC8525" format="default"/> instead of listing
 them as capabilities in the &lt;hello&gt; message.
             </t>
           </li>
@@ -1923,7 +1922,7 @@ specifications.
 A NETCONF server MUST announce the modules it implements (see
 <xref target="implementing" format="default"/>) by implementing the YANG module
 "ietf‑yang‑library" defined in
-<xref target="RFC7895" format="default"/> and listing all implemented modules in
+<xref target="RFC8525" format="default"/> and listing all implemented modules in
 the "/modules‑state/module" list.
           </t>
           <t>
@@ -1972,7 +1971,7 @@ If a server implements a module A that imports a module C without
 specifying the revision date of module C and the server does not
 implement C (e.g., if C only defines some typedefs), the server MUST
 list module C in the "/modules‑state/module" list from
-"ietf‑yang‑library" <xref target="RFC7895" format="default"/>, and it MUST set
+"ietf‑yang‑library" <xref target="RFC8525" format="default"/>, and it MUST set
 the leaf "conformance‑type" to "import" for this module.
           </t>
           <t>
@@ -13371,128 +13370,16 @@ compromised.
       <name>References</name>
       <references>
         <name>Normative References</name>
-        <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-          <front>
-            <title>Key words for use in RFCs to Indicate Requirement Levels</title>
-            <author fullname="S. Bradner" initials="S." surname="Bradner"/>
-            <date month="March" year="1997"/>
-            <abstract>
-              <t>In many standards track documents several words are used to signify the requirements in the specification. These words are often capitalized. This document defines these words as they should be interpreted in IETF documents. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="BCP" value="14"/>
-          <seriesInfo name="RFC" value="2119"/>
-          <seriesInfo name="DOI" value="10.17487/RFC2119"/>
-        </reference>
-        <reference anchor="RFC3629" target="https://www.rfc-editor.org/info/rfc3629" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml">
-          <front>
-            <title>UTF-8, a transformation format of ISO 10646</title>
-            <author fullname="F. Yergeau" initials="F." surname="Yergeau"/>
-            <date month="November" year="2003"/>
-            <abstract>
-              <t>ISO/IEC 10646-1 defines a large character set called the Universal Character Set (UCS) which encompasses most of the world's writing systems. The originally proposed encodings of the UCS, however, were not compatible with many current applications and protocols, and this has led to the development of UTF-8, the object of this memo. UTF-8 has the characteristic of preserving the full US-ASCII range, providing compatibility with file systems, parsers and other software that rely on US-ASCII values but are transparent to other values. This memo obsoletes and replaces RFC 2279.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="STD" value="63"/>
-          <seriesInfo name="RFC" value="3629"/>
-          <seriesInfo name="DOI" value="10.17487/RFC3629"/>
-        </reference>
-        <reference anchor="RFC3986" target="https://www.rfc-editor.org/info/rfc3986" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml">
-          <front>
-            <title>Uniform Resource Identifier (URI): Generic Syntax</title>
-            <author fullname="T. Berners-Lee" initials="T." surname="Berners-Lee"/>
-            <author fullname="R. Fielding" initials="R." surname="Fielding"/>
-            <author fullname="L. Masinter" initials="L." surname="Masinter"/>
-            <date month="January" year="2005"/>
-            <abstract>
-              <t>A Uniform Resource Identifier (URI) is a compact sequence of characters that identifies an abstract or physical resource. This specification defines the generic URI syntax and a process for resolving URI references that might be in relative form, along with guidelines and security considerations for the use of URIs on the Internet. The URI syntax defines a grammar that is a superset of all valid URIs, allowing an implementation to parse the common components of a URI reference without knowing the scheme-specific requirements of every possible identifier. This specification does not define a generative grammar for URIs; that task is performed by the individual specifications of each URI scheme. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="STD" value="66"/>
-          <seriesInfo name="RFC" value="3986"/>
-          <seriesInfo name="DOI" value="10.17487/RFC3986"/>
-        </reference>
-        <reference anchor="RFC4648" target="https://www.rfc-editor.org/info/rfc4648" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml">
-          <front>
-            <title>The Base16, Base32, and Base64 Data Encodings</title>
-            <author fullname="S. Josefsson" initials="S." surname="Josefsson"/>
-            <date month="October" year="2006"/>
-            <abstract>
-              <t>This document describes the commonly used base 64, base 32, and base 16 encoding schemes. It also discusses the use of line-feeds in encoded data, use of padding in encoded data, use of non-alphabet characters in encoded data, use of different encoding alphabets, and canonical encodings. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="4648"/>
-          <seriesInfo name="DOI" value="10.17487/RFC4648"/>
-        </reference>
-        <reference anchor="RFC5234" target="https://www.rfc-editor.org/info/rfc5234" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml">
-          <front>
-            <title>Augmented BNF for Syntax Specifications: ABNF</title>
-            <author fullname="D. Crocker" initials="D." role="editor" surname="Crocker"/>
-            <author fullname="P. Overell" initials="P." surname="Overell"/>
-            <date month="January" year="2008"/>
-            <abstract>
-              <t>Internet technical specifications often need to define a formal syntax. Over the years, a modified version of Backus-Naur Form (BNF), called Augmented BNF (ABNF), has been popular among many Internet specifications. The current specification documents ABNF. It balances compactness and simplicity with reasonable representational power. The differences between standard BNF and ABNF involve naming rules, repetition, alternatives, order-independence, and value ranges. This specification also supplies additional rule definitions and encoding for a core lexical analyzer of the type common to several Internet specifications. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="STD" value="68"/>
-          <seriesInfo name="RFC" value="5234"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5234"/>
-        </reference>
-        <reference anchor="RFC5277" target="https://www.rfc-editor.org/info/rfc5277" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5277.xml">
-          <front>
-            <title>NETCONF Event Notifications</title>
-            <author fullname="S. Chisholm" initials="S." surname="Chisholm"/>
-            <author fullname="H. Trevino" initials="H." surname="Trevino"/>
-            <date month="July" year="2008"/>
-            <abstract>
-              <t>This document defines mechanisms that provide an asynchronous message notification delivery service for the Network Configuration protocol (NETCONF). This is an optional capability built on top of the base NETCONF definition. This document defines the capabilities and operations necessary to support this service. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="5277"/>
-          <seriesInfo name="DOI" value="10.17487/RFC5277"/>
-        </reference>
-        <reference anchor="RFC6241" target="https://www.rfc-editor.org/info/rfc6241" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml">
-          <front>
-            <title>Network Configuration Protocol (NETCONF)</title>
-            <author fullname="R. Enns" initials="R." role="editor" surname="Enns"/>
-            <author fullname="M. Bjorklund" initials="M." role="editor" surname="Bjorklund"/>
-            <author fullname="J. Schoenwaelder" initials="J." role="editor" surname="Schoenwaelder"/>
-            <author fullname="A. Bierman" initials="A." role="editor" surname="Bierman"/>
-            <date month="June" year="2011"/>
-            <abstract>
-              <t>The Network Configuration Protocol (NETCONF) defined in this document provides mechanisms to install, manipulate, and delete the configuration of network devices. It uses an Extensible Markup Language (XML)-based data encoding for the configuration data as well as the protocol messages. The NETCONF protocol operations are realized as remote procedure calls (RPCs). This document obsoletes RFC 4741. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="6241"/>
-          <seriesInfo name="DOI" value="10.17487/RFC6241"/>
-        </reference>
-        <reference anchor="RFC7405" target="https://www.rfc-editor.org/info/rfc7405" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml">
-          <front>
-            <title>Case-Sensitive String Support in ABNF</title>
-            <author fullname="P. Kyzivat" initials="P." surname="Kyzivat"/>
-            <date month="December" year="2014"/>
-            <abstract>
-              <t>This document extends the base definition of ABNF (Augmented Backus-Naur Form) to include a way to specify US-ASCII string literals that are matched in a case-sensitive manner.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="7405"/>
-          <seriesInfo name="DOI" value="10.17487/RFC7405"/>
-        </reference>
-        <!-- draft-ietf-netconf-yang-library (PUB) -->
-<reference anchor="RFC7895" target="https://www.rfc-editor.org/info/rfc7895" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7895.xml">
-          <front>
-            <title>YANG Module Library</title>
-            <author fullname="A. Bierman" initials="A." surname="Bierman"/>
-            <author fullname="M. Bjorklund" initials="M." surname="Bjorklund"/>
-            <author fullname="K. Watsen" initials="K." surname="Watsen"/>
-            <date month="June" year="2016"/>
-            <abstract>
-              <t>This document describes a YANG library that provides information about all the YANG modules used by a network management server (e.g., a Network Configuration Protocol (NETCONF) server). Simple caching mechanisms are provided to allow clients to minimize retrieval of this information.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="7895"/>
-          <seriesInfo name="DOI" value="10.17487/RFC7895"/>
-        </reference>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5277.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8525.xml"/>
+
         <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
           <front>
             <title>Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
@@ -13505,6 +13392,7 @@ compromised.
           </front>
           <seriesInfo name="W3C Recommendation" value="REC-xml-20081126"/>
         </reference>
+
         <reference anchor="XML-NAMES" target="http://www.w3.org/TR/2009/REC-xml-names-20091208">
           <front>
             <title>Namespaces in XML 1.0 (Third Edition)</title>
@@ -13527,6 +13415,7 @@ compromised.
           </front>
           <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-xml-names-20091208"/>
         </reference>
+
         <reference anchor="XSD-TYPES" target="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028">
           <front>
             <title>XML Schema Part 2: Datatypes Second Edition</title>
@@ -13540,6 +13429,7 @@ compromised.
           </front>
           <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-xmlschema-2-20041028"/>
         </reference>
+
         <reference anchor="XPATH" target="http://www.w3.org/TR/1999/REC-xpath-19991116">
           <front>
             <title>XML Path Language (XPath) Version 1.0</title>
@@ -13553,6 +13443,7 @@ compromised.
           </front>
           <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-xpath-19991116"/>
         </reference>
+
         <reference anchor="ISO.10646">
           <front>
             <title>Information Technology - Universal Multiple-Octet Coded Character Set (UCS)</title>
@@ -13564,8 +13455,10 @@ compromised.
           <seriesInfo name="ISO" value="Standard 10646:2014"/>
         </reference>
       </references>
+
       <references>
         <name>Informative References</name>
+
         <reference anchor="IEEE754-2008" target="http://standards.ieee.org/findstds/standard/754-2008.html">
           <front>
             <title>IEEE Standard for Floating-Point Arithmetic</title>
@@ -13577,154 +13470,19 @@ compromised.
           <seriesInfo name="IEEE" value="754-2008"/>
           <seriesInfo name="DOI" value="10.1109/IEEESTD.2008.4610935"/>
         </reference>
-        <reference anchor="RFC2578" target="https://www.rfc-editor.org/info/rfc2578" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml">
-          <front>
-            <title>Structure of Management Information Version 2 (SMIv2)</title>
-            <author fullname="K. McCloghrie" initials="K." role="editor" surname="McCloghrie"/>
-            <author fullname="D. Perkins" initials="D." role="editor" surname="Perkins"/>
-            <author fullname="J. Schoenwaelder" initials="J." role="editor" surname="Schoenwaelder"/>
-            <date month="April" year="1999"/>
-            <abstract>
-              <t>It is the purpose of this document, the Structure of Management Information Version 2 (SMIv2), to define that adapted subset, and to assign a set of associated administrative values. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="STD" value="58"/>
-          <seriesInfo name="RFC" value="2578"/>
-          <seriesInfo name="DOI" value="10.17487/RFC2578"/>
-        </reference>
-        <reference anchor="RFC2579" target="https://www.rfc-editor.org/info/rfc2579" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml">
-          <front>
-            <title>Textual Conventions for SMIv2</title>
-            <author fullname="K. McCloghrie" initials="K." role="editor" surname="McCloghrie"/>
-            <author fullname="D. Perkins" initials="D." role="editor" surname="Perkins"/>
-            <author fullname="J. Schoenwaelder" initials="J." role="editor" surname="Schoenwaelder"/>
-            <date month="April" year="1999"/>
-            <abstract>
-              <t>It is the purpose of this document to define the initial set of textual conventions available to all MIB modules. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="STD" value="58"/>
-          <seriesInfo name="RFC" value="2579"/>
-          <seriesInfo name="DOI" value="10.17487/RFC2579"/>
-        </reference>
-        <reference anchor="RFC3780" target="https://www.rfc-editor.org/info/rfc3780" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml">
-          <front>
-            <title>SMIng - Next Generation Structure of Management Information</title>
-            <author fullname="F. Strauss" initials="F." surname="Strauss"/>
-            <author fullname="J. Schoenwaelder" initials="J." surname="Schoenwaelder"/>
-            <date month="May" year="2004"/>
-            <abstract>
-              <t>This memo defines the base SMIng (Structure of Management Information, Next Generation) language. SMIng is a data definition language that provides a protocol-independent representation for management information. Separate RFCs define mappings of SMIng to specific management protocols, including SNMP. This memo defines an Experimental Protocol for the Internet community.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="3780"/>
-          <seriesInfo name="DOI" value="10.17487/RFC3780"/>
-        </reference>
-        <reference anchor="RFC4844" target="https://www.rfc-editor.org/info/rfc4844" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4844.xml">
-          <front>
-            <title>The RFC Series and RFC Editor</title>
-            <author fullname="L. Daigle" initials="L." role="editor" surname="Daigle"/>
-            <author>
-              <organization abbrev="IAB">Internet Architecture Board</organization>
-            </author>
-            <date month="July" year="2007"/>
-            <abstract>
-              <t>This document describes the framework for an RFC Series and an RFC Editor function that incorporate the principles of organized community involvement and accountability that has become necessary as the Internet technical community has grown, thereby enabling the RFC Series to continue to fulfill its mandate. This memo provides information for the Internet community.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="4844"/>
-          <seriesInfo name="DOI" value="10.17487/RFC4844"/>
-        </reference>
-        <reference anchor="RFC6020" target="https://www.rfc-editor.org/info/rfc6020" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml">
-          <front>
-            <title>YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)</title>
-            <author fullname="M. Bjorklund" initials="M." role="editor" surname="Bjorklund"/>
-            <date month="October" year="2010"/>
-            <abstract>
-              <t>YANG is a data modeling language used to model configuration and state data manipulated by the Network Configuration Protocol (NETCONF), NETCONF remote procedure calls, and NETCONF notifications. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="6020"/>
-          <seriesInfo name="DOI" value="10.17487/RFC6020"/>
-        </reference>
-        <reference anchor="RFC6643" target="https://www.rfc-editor.org/info/rfc6643" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml">
-          <front>
-            <title>Translation of Structure of Management Information Version 2 (SMIv2) MIB Modules to YANG Modules</title>
-            <author fullname="J. Schoenwaelder" initials="J." surname="Schoenwaelder"/>
-            <date month="July" year="2012"/>
-            <abstract>
-              <t>YANG is a data modeling language used to model configuration and state data manipulated by the Network Configuration Protocol (NETCONF), NETCONF remote procedure calls, and NETCONF notifications. The Structure of Management Information (SMIv2) defines fundamental data types, an object model, and the rules for writing and revising MIB modules for use with the Simple Network Management Protocol (SNMP). This document defines a translation of SMIv2 MIB modules into YANG modules, enabling read-only (config false) access to data objects defined in SMIv2 MIB modules via NETCONF. [STANDARDS-TRACK]</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="6643"/>
-          <seriesInfo name="DOI" value="10.17487/RFC6643"/>
-        </reference>
-        <reference anchor="RFC6991" target="https://www.rfc-editor.org/info/rfc6991" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml">
-          <front>
-            <title>Common YANG Data Types</title>
-            <author fullname="J. Schoenwaelder" initials="J." role="editor" surname="Schoenwaelder"/>
-            <date month="July" year="2013"/>
-            <abstract>
-              <t>This document introduces a collection of common data types to be used with the YANG data modeling language. This document obsoletes RFC 6021.</t>
-            </abstract>
-          </front>
-          <seriesInfo name="RFC" value="6991"/>
-          <seriesInfo name="DOI" value="10.17487/RFC6991"/>
-        </reference>
-        <!-- draft-ietf-netmod-yang-json (RFC 7951) -->
-<reference anchor="RFC7951" target="http://www.rfc-editor.org/info/rfc7951">
-          <front>
-            <title>JSON Encoding of Data Modeled with YANG</title>
-            <author initials="L" surname="Lhotka" fullname="Ladislav Lhotka">
-              <organization/>
-            </author>
-            <date month="August" year="2016"/>
-          </front>
-          <seriesInfo name="RFC" value="7951"/>
-          <seriesInfo name="DOI" value="10.17487/RFC7951"/>
-        </reference>
-        <!-- draft-ietf-netmod-rfc6087bis (I-D Exists) -->
-<reference anchor="YANG-Guidelines">
-          <front>
-            <title>Guidelines for Authors and Reviewers of YANG Data Model Documents</title>
-            <author initials="A" surname="Bierman" fullname="Andy Bierman">
-              <organization/>
-            </author>
-            <date month="July" year="2016"/>
-          </front>
-          <seriesInfo name="Work in Progress," value="draft-ietf-netmod-rfc6087bis-07"/>
-        </reference>
-        <!-- draft-ietf-netconf-restconf (Waiting for Writeup) -->
-<reference anchor="RESTCONF">
-          <front>
-            <title>RESTCONF Protocol</title>
-            <author initials="A" surname="Bierman" fullname="Andy Bierman">
-              <organization/>
-            </author>
-            <author initials="M" surname="Bjorklund" fullname="Martin Bjorklund">
-              <organization/>
-            </author>
-            <author initials="K" surname="Watsen" fullname="Kent Watsen">
-              <organization/>
-            </author>
-            <date month="August" year="2016"/>
-          </front>
-          <seriesInfo name="Work in Progress," value="draft-ietf-netconf-restconf-16"/>
-        </reference>
-        <!-- draft-vanderstok-core-comi (-D Exists) -->
-<reference anchor="CoMI">
-          <front>
-            <title>CoAP Management Interface</title>
-            <author initials="P" surname="van der Stok" fullname="Peter van der Stok">
-              <organization/>
-            </author>
-            <author initials="A" surname="Bierman" fullname="Andy Bierman">
-              <organization/>
-            </author>
-            <date month="March" year="2016"/>
-          </front>
-          <seriesInfo name="Work in Progress," value="draft-vanderstok-core-comi-09"/>
-        </reference>
+
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4844.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
+        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
+
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
           <front>
             <title>XSL Transformations (XSLT) Version 1.0</title>
@@ -13735,6 +13493,7 @@ compromised.
           </front>
           <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-xslt-19991116"/>
         </reference>
+
         <reference anchor="XPATH2.0" target="http://www.w3.org/TR/2010/REC-xpath20-20101214">
           <front>
             <title>XML Path Language (XPath) 2.0 (Second Edition)</title>
@@ -13763,6 +13522,7 @@ compromised.
           </front>
           <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-xpath20-20101214"/>
         </reference>
+
       </references>
     </references>
     <section numbered="false" toc="default">

@@ -65,5 +65,6 @@ clean:
 clean_draft:
 	-rm -f $(draft)-[0-9][0-9].xml
 	-rm -f $(draft)-[0-9][0-9].txt
+	-rm -f $(draft)-[0-9][0-9].txt.paged.txt
 	-rm -f $(draft)-[0-9][0-9].html
 

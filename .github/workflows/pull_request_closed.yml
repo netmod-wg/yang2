@@ -33,14 +33,14 @@ jobs:
           tar -xzvf drafts.tgz
           rm drafts.tgz
 
-      # if merged...
+      # if merged... (i.e., PR succeeded)
       - name: If merged, move compiled artifacts to 'main'
         if: github.event.pull_request.merged == true
         run: |
           rm -rf mysite/main
           mv mysite/${{github.head_ref}} mysite/main
 
-      # if not merged...
+      # if not merged... (i.e., PR failed)
       - name: If not merged, just delete the branch dir
         if: github.event.pull_request.merged == false
         run: |
@@ -50,7 +50,7 @@ jobs:
       - name: Create mysite/index.html
         run: |
           chmod +x .github/workflows/gen_index_html.sh
-          .github/workflows/gen_index_html.sh "${{github.event.pull_request.number}}" "${{github.event.pull_request.title}}"  "${{github.event.pull_request.head.ref}}"
+          .github/workflows/gen_index_html.sh
 
       # recreate the drafts.tgz
       - name: Recreate drafts.tgz
@@ -68,3 +68,26 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  increment_git_tag:
+    name: Increment Git Tag
+    runs-on: macos-latest
+    needs: update_github_pages
+    if: github.event.pull_request.merged == true
+    steps:
+
+      # checkout repo so can run `git tag`
+      - uses: actions/checkout@v4
+      - name: Push the tag
+        run: |
+          curl -O https://netmod-wg.github.io/yang2/drafts.tgz
+          tar -xzvf drafts.tgz
+          rm drafts.tgz
+          tree
+          ls main/
+          ls -1 main/draft-yn-netmod-yang2-[0-9][0-9].xml
+          TAG=`ls -1 main/draft-yn-netmod-yang2-[0-9][0-9].xml | sed -e 's/\.xml$//'`
+          echo "TAG=$TAG"
+          git tag $TAG
+          git push --tags
+

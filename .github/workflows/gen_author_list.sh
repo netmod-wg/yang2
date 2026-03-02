@@ -46,7 +46,11 @@ sorted_xml_authors() {
   # output authors as an XML <author> element
   for a in $AUTHORS; do
 
-    FULL_NAME=`grep $a $0 | awk -F'"' '{print $2}'`
+    # skip bot
+    echo $a | grep -q kent && continue # skip bot
+
+    # collect info from "AUTHOR INFO" at bottom
+    FULL_NAME=`grep $a $0 | awk -F'"' '{print $2}' || echo "$a NOT FOUND"`
     ORGANIZATION=`grep $a $0 | awk -F'"' '{print $4}'`
     FIRST_NAME=`echo $FULL_NAME | awk '{print $1}'`
     LAST_NAME=`echo $FULL_NAME | awk '{print $2}'`
@@ -70,11 +74,12 @@ main() {
      exit 1
   fi
   echo "$SORTED_XML" > .authors.txt
+  cat .authors.txt
 }
 
 
 main "$@"
 
-
-#### AUTHOR INFO ####
+#### AUTHOR INFO (used by *this* script) ####
 #kwatsen: "Kent Watsen" "Watsen Networks" "kent+ietf@watsen.net"
+

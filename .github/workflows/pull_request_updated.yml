@@ -144,7 +144,6 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: 'All of the following MUST be verified by AUTHORS before merging to `main`:'
       - run: |
-          echo "BODY: ${{steps.fc.outputs.comment-body}}"
           if ${{ contains(steps.fc.outputs.comment-body, '[ ] Updated') }} ; then
             echo "All checklist items must be selected."
             exit 1

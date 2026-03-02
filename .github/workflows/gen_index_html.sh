@@ -62,7 +62,7 @@ for branch in $SORTED; do
 
   # the "Actions" column
   if [ $branch = "main" ]; then
-    echo "    <td nowrap class=\"bg\"><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-yang2&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-$MVER.txt.paged.txt\">Diff with Datatracker</a> </td>" >> index.html
+    echo "    <td nowrap class=\"bg\"><a href=\"https://author-tools.ietf.org/iddiff?url_1=https://netmod-wg.github.io/yang2/main/rfc7950.txt&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-$MVER.txt\">Diff with RFC7950</a><br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-yang2&url_2=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-$MVER.txt.paged.txt\">Diff with Datatracker</a> </td>" >> index.html
   else
     echo "    <td nowrap class=\"bg\"> <a href=\"https://author-tools.ietf.org/api/iddiff?url_1=https://netmod-wg.github.io/yang2/main/draft-yn-netmod-yang2-$MVER.txt&url_2=https://netmod-wg.github.io/yang2/$branch/draft-yn-netmod-yang2-$BVER.txt\">Diff with Main</a> </td>" >> index.html
   fi

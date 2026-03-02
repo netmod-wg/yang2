@@ -53,6 +53,8 @@
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>).
         If you wish to contribute, please consider opening a pull request (PR).
         See the README file for details.</t>
+        <t>See <eref target="https://netmod-wg.github.io/yang2"/>
+        for a dashboard of the document's status.</t>
     </note>
   </front>
   <middle>

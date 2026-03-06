@@ -135,6 +135,7 @@ jobs:
   ensure_checklist_complete:
     name: Ensure Checklist Complete
     runs-on: ubuntu-latest
+    if: github.event.action != 'opened'
     steps:
       - name: Ensure Checklist Complete
         uses: peter-evans/find-comment@v4

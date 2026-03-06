@@ -22,12 +22,6 @@
             <email>kent+ietf@watsen.net</email>
         </address>
     </author>
-    <author initials="M" surname="Bjorklund" fullname="Martin Bjorklund" role="editor">
-      <organization>Tail-f Systems</organization>
-      <address>
-        <email>mbj@tail-f.com</email>
-      </address>
-    </author>
     <date/>
     <keyword>yang</keyword>
     <keyword>data modeling</keyword>
@@ -12521,28 +12515,25 @@ compromised.
     </references>
     <section numbered="false">
       <name>Acknowledgements</name>
-      <t>
-The editor wishes to thank the following individuals, who all provided
-helpful comments on various draft versions of this document: Mehmet Ersue,
-Washam Fan, Joel Halpern, Per Hedeland, Leif Johansson, Ladislav
-Lhotka, Lionel Morand, Gerhard Muenz, Peyman Owladi, Tom Petch, Randy
-Presuhn, David Reid, Jernej Tuljak, Kent Watsen, Bert Wijnen, Robert
-Wilton, and Dale Worley.
-      </t>
+      <t>The editor wishes to thank the following individuals, who all provided
+        helpful comments on various draft versions of this document: (sorted by
+        first name)</t>
+      <ul>
+        <li>Pending</li>
+      </ul>
+      <t>This document builds on top RFC 7950. Please see that
+        document's "Acknowledgements" section for additional acknowledgements.</t>
     </section>
     <section numbered="false">
       <name>Contributors</name>
-      <t>
-The following people all contributed significantly to the initial
-YANG document:
-      </t>
-      <artwork><![CDATA[
- - Andy Bierman (YumaWorks)
- - Balazs Lengyel (Ericsson)
- - David Partain (Ericsson)
- - Juergen Schoenwaelder (Jacobs University Bremen)
- - Phil Shafer (Juniper Networks)
-            ]]></artwork>
+      <t>The following individuals contributed to this document: (sorted by
+        amount of contribution)</t>
+      <ul>
+        <li>Pending</li>
+      </ul>
+      <t>This document builds on top RFC 7950, edited by Martin
+        Björklund.  Please see that document's "Contributors" section for
+        additional contributors.</t>
     </section>
   </back>
 </rfc>

@@ -1,10 +1,17 @@
-# YANG 2.0
+# YANG 2
 
 This is the repository for the document `draft-yn-netmod-yang2`
 (The YANG 2.0 Data Modeling Language).
 
-The initial initial goal is to make RFC 7950 not be XML or NETCONF specific,
+Dashboard: https://netmod-wg.github.io/yang2
+
+# Immediate Focus
+
+PR: `make-baseline`  https://github.com/netmod-wg/yang2/pull/4
+
+The initial goal is to make RFC 7950 not be XML or NETCONF specific,
 thus setting a baseline for subsequent changes.  This is accomplished by:
+
   - removing the "XML Encoding Rules" sections.
   - removing the "NETCONF &ltl;edit-config&gt; Operations" sections.
   - removing the "NETCONF XML Encoding Rules" sections.

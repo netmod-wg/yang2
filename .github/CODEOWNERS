@@ -1,6 +1,7 @@
-# admins can approve reviews on all files.
-@netmod-wg/yang2-admin
+# global
+@netmod-wg/yang2-global
 
-# owners can approve reviews on all draft-source files.
-draft-yn-netmod-yang2-00.xml @netmod-wg/yang2-owners
-designs/ @netmod-wg/yang2-owners
+# codeowners
+draft-yn-netmod-yang2* @netmod-wg/yang2-codeowners
+/designs/ @netmod-wg/yang2-codeowners
+

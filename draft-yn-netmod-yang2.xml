@@ -64,7 +64,7 @@
     automatically generated.</t>
       <t>YANG is a high-level data modeling language, independent of any specific
     encoding or any specific protocol.  Encodings (e.g., XML <xref target="I-D.yn-netmod-yang-xml"/>,
-    JSON <xref target="RFC7951"/>, CBOR <xref target="I-D.ietf-core-yang-cbor"/>, etc.)
+    JSON <xref target="RFC7951"/>, CBOR <xref target="RFC9254"/>, etc.)
     and protocols (e.g., NETCONF <xref target="RFC6241"/>, RESTCONF
     <xref target="RFC8040"/>, CORECONF <xref target="I-D.ietf-core-comi"/>,
     etc.) are out of scope for this specification.</t>
@@ -12469,9 +12469,9 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9254.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-yang-cbor.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.yn-netmod-yang-xml.xml"/>
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
           <front>

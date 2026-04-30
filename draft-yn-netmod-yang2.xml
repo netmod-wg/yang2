@@ -62,7 +62,7 @@
     the API for any network application.  The key being that, in defining an
     application's data model, both its API and persistence layers can be
     automatically generated.</t>
-      <t>YANG is high-level data modeling language, independent of any specific
+      <t>YANG is a high-level data modeling language, independent of any specific
     encoding or any specific protocol.  Encodings (e.g., XML <xref target="I-D.yn-netmod-yang-xml"/>,
     JSON <xref target="RFC7951"/>, CBOR <xref target="I-D.ietf-core-yang-cbor"/>, etc.)
     and protocols (e.g., NETCONF <xref target="RFC6241"/>, RESTCONF

@@ -74,7 +74,7 @@
     original specification.</t>
       <t>Note that this document does not obsolete RFC 6020 <xref target="RFC6020"/>
     or RFC 7950 <xref target="RFC7950"/>.  A mix of YANG module versions may be
-    used to describe a complete data model, as described in Section <xref target="coexistence"/>.</t>
+    used to describe a complete data model, as described in <xref target="coexistence"/>.</t>
       <t>In terms of developing YANG data models, <xref target="RFC8407"/>
         provides some guidelines and recommendations.</t>
       <section>

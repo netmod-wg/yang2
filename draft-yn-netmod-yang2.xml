@@ -9431,7 +9431,7 @@ the leaf it references.
         <section>
           <name>Usage Example</name>
           <t>Instance examples in this secton use the XML encoding.  XML is
-  just one possible encoding.  See the <xref target="intro"/> for
+  just one possible encoding.  See <xref target="intro"/> for
   more information about encodings.</t>
           <t>
 With the following list:
@@ -9907,8 +9907,8 @@ statement (<xref target="require-instance"/>).
           <t>
 An instance-identifier value is lexically represented as a
 string.  All node names in an instance-identifier value MUST be
-namespace qualified.  See encoding for details for how to qualify
-node names.
+namespace qualified.  Each encoding, see <xref target="intro"/>,
+specifies how to qualify node names.
           </t>
         </section>
         <section>

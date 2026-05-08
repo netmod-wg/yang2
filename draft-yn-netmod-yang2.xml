@@ -32,7 +32,8 @@
   management protocols. This document describes the syntax and
   semantics of version 2.0 of the YANG language.  YANG version 2.0 is
   a major release of the YANG language, addressing issues found in
-  the original specification.
+  the original specification. <!-- FIXME: use more exact text later?  e.g.
+  "small number of backwards incompatibilities with YANG version 1.1" -->
       </t>
     </abstract>
     <note removeInRFC="true">

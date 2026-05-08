@@ -59,8 +59,8 @@
     with rules for how they relate.</t>
       <t>Historically, YANG has been used to manage network elements such as
     routers, switches, and firewalls.  That said, YANG is suitable for defining
-    the API for any network application.  The key being that, in defining an
-    application's data model, both its API and persistence layers can be
+    the API for any network application.  YANG's key value is that in defining
+    an application's data model, both its API and persistence layers can be
     automatically generated.</t>
       <t>YANG is a high-level data modeling language, independent of any specific
     encoding or any specific protocol.  Encodings (e.g., XML <xref target="I-D.yn-netmod-yang-xml"/>,
@@ -438,8 +438,7 @@ overview of YANG to first-time readers.
         <t>
 YANG is primarily designed to model application data, which can be
 used to automate the generation of both APIs and CLIs.  YANG may
-also be used to model document data, for use independent of an
-application.
+also be used to model file data <xref target="RFC9195"/>.
         </t>
         <t>
 A YANG module defines hierarchies of data that can be used
@@ -12468,6 +12467,7 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9195.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9254.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9907.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>

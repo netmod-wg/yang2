@@ -72,13 +72,13 @@
       <t>This document describes the syntax and semantics of version 2.0
     of the YANG language (YANG 1.1). YANG 2.0 is a major
     release of the YANG language, addressing issues in the
-    original specification.</t>
+    original specification (see <xref target="changes"/>).</t>
       <t>Note that this document does not obsolete RFC 6020 <xref target="RFC6020"/>
     or RFC 7950 <xref target="RFC7950"/>.  A mix of YANG module versions may be
     used to describe a complete data model, as described in <xref target="coexistence"/>.</t>
       <t>In terms of developing YANG data models, <xref target="RFC9907"/>
         provides some guidelines and recommendations.</t>
-      <section>
+      <section anchor="changes">
         <name>Summary of Changes from RFC 7950</name>
         <t>This document defines version 2.0 of the YANG language.  YANG 2.0
     is a major release of the YANG language. Whilst it is by and large the

@@ -6906,7 +6906,7 @@ In namespace urn:example:interface-module, we have:
         type string;
       }
       leaf ifType {
-        type iana:IfType;
+        type string;
       }
       leaf ifMtu {
         type int32;

@@ -11269,7 +11269,7 @@ If an interface has this leaf:
   leaf flags {
     type bits {
       bit UP;
-      bit PROMISCUOUS
+      bit PROMISCUOUS;
       bit DISABLED;
     }
    }

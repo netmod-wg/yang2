@@ -8834,9 +8834,9 @@ context, in addition to the definition in <xref target="xpath-context" format="d
               <t>
 If the "when" statement is a child of an "augment" statement, then
 the context node is the augment's target node in the data tree, if
-the target node is a data node.  Otherwise, the context node is the
+the target node is a data node, rpc, action or notification.  Otherwise, the context node is the
 closest ancestor node to the target node that is also a data
-node.  If no such node exists, the context node is the root node.
+node, rpc, action or notification.  If no such node exists, the context node is the root node.
 The accessible tree is tentatively altered during the
 processing of the XPath expression by removing all instances (if
 any) of the nodes added by the "augment" statement.

@@ -1991,9 +1991,12 @@ For example, with these modules:
     prefix "a";
 
     import b {
-      revision-date 2015-01-01;
+        revision-date 2015-01-01;
+        prefix b;
     }
-    import c;
+    import c {
+        prefix c;
+    }
 
     revision 2015-01-01;
 

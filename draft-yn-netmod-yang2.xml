@@ -2472,11 +2472,11 @@ For example, consider the following definition:
     type decimal64 {
       fraction-digits 18;
     }
-    must ". <= 10";
+    must ". <= 9";
   }
             ]]></artwork>
         <t>
-An instance of the "lxiv" leaf having the value of 10.0000000000000001
+An instance of the "lxiv" leaf having the value of 9.0000000000000001
 will then successfully pass validation.
         </t>
         <section anchor="xpath-context" numbered="true" toc="default">

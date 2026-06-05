@@ -2681,7 +2681,7 @@ The accessible tree for a notification "down" on /a/b[id="2"] is:
             <t>
 The accessible tree for an action invocation of "reset" on
 ⁠/a⁠/b[id="1"]
-with the "when" parameter set to "10" would be:
+with the "delay" parameter set to "10" would be:
             </t>
             <artwork name="" type="" align="left" alt=""><![CDATA[
   <a xmlns="urn:example:a">

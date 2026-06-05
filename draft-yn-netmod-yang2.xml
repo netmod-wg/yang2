@@ -7706,7 +7706,7 @@ MUST be used.  If the "augment" statement is a substatement to the
         </t>
         <t>
 If the target node is a container, list, case, input, output, or
-notification node, the "container", "leaf", "list", "leaf‑list",
+notification node, the "anydata", "anyxml", "container", "leaf", "list", "leaf‑list",
 "uses", and "choice" statements can be used within the "augment"
 statement.
         </t>

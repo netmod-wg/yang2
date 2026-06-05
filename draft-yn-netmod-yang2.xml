@@ -10360,9 +10360,10 @@ which the "path" statement is defined.
           <name>The "require-instance" Statement</name>
           <t>
 The "require‑instance" statement, which is a substatement to the
-"type" statement, MAY be present if the type is "instance‑identifier"
-or "leafref".  It takes as an argument the string "true" or "false".
-If this statement is not present, it defaults to "true".
+"type" statement, MAY be present if the type is "instance‑identifier",
+"leafref" or a type derived from them.  It takes as an argument the
+string "true" or "false".  If this statement is not present, it
+defaults to "true".
           </t>
           <t>
 If "require‑instance" is "true", it means that the instance being

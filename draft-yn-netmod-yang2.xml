@@ -12953,7 +12953,17 @@ quoted-string       = (DQUOTE string DQUOTE) / (SQUOTE string SQUOTE)
 path-arg-str        = < a string that matches the rule >
                       < path-arg >
 
-path-arg            = absolute-path / relative-path
+path-arg            = deref-expr / path-str
+
+deref-expr          = deref-function-invocation *WSP "/" *WSP
+                      relative-path
+
+path-str            = absolute-path / relative-path
+
+deref-function-invocation = deref-keyword *WSP
+                            "(" *WSP path-str *WSP ")"
+
+deref-keyword       = %s"deref"
 
 absolute-path       = 1*("/" (node-identifier *path-predicate))
 

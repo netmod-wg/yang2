@@ -8848,7 +8848,7 @@ any) of the nodes added by the "augment" statement.
               <t>
 If the "when" statement is a child of a "uses", "choice", or "case"
 statement, then the context node is the closest ancestor node to the
-node with the "when" statement that is also a data node.  If no
+node with the "when" statement that is also a data node, rpc, action or notification.  If no
 such node exists, the context node is the root node.
 The accessible tree is tentatively altered during the
 processing of the XPath expression by removing all instances (if

@@ -7625,7 +7625,9 @@ module:
   }
             ]]></artwork>
           <t>
-A corresponding XML instance example of the complete notification:
+A corresponding XML instance example of the complete notification
+follows.  This example reports an event for an interface from the
+"example-foo" module defined in Section 13.1.1.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
   <notification
@@ -7633,7 +7635,7 @@ A corresponding XML instance example of the complete notification:
     <eventTime>2008-07-08T00:01:00Z</eventTime>
     <event xmlns="urn:example:event">
       <event-class>fault</event-class>
-      <reporting-entity>
+      <reporting-entity xmlns:ex="urn:example:foo">
         /ex:interface[ex:name='Ethernet0']
       </reporting-entity>
       <severity>major</severity>

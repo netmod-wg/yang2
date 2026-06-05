@@ -8546,7 +8546,7 @@ statement.  The properties to replace MUST exist in the target node.
             </t>
             <t>
 The argument "delete" deletes properties from the target node.  The
-properties to delete are identified by substatements to the "delete"
+properties to delete are identified by substatements to the "deviate"
 statement.  The substatement's keyword MUST match a corresponding
 keyword in the target node, and the argument's string MUST be equal to
 the corresponding keyword's argument string in the target node.

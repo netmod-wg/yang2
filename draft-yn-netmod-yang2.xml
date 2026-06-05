@@ -11184,7 +11184,7 @@ The module defined in <xref target="derived-from-ex" format="default"/> might al
             </t>
             <artwork name="" type="" align="left" alt=""><![CDATA[
     augment "/interface" {
-      when 'derived-from-or-self(type, "exif:fast-ethernet");
+      when 'derived-from-or-self(type, "exif:fast-ethernet")';
       // Fast-Ethernet-specific definitions here
     }
             ]]></artwork>

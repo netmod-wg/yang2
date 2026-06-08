@@ -11166,7 +11166,7 @@ submodule.
 The derived-from-or-self() function returns "true" if any node in the
 argument "nodes" is a node of type "identityref" or a type derived
 from "identityref", and its value is an identity that is equal to or
-derived from (see Section 7.18.2) the identity "identity";
+derived from (see <xref target="base" format="default"/>) the identity "identity";
 otherwise, it returns "false".
           </t>
           <t>

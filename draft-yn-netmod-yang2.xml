@@ -10363,7 +10363,8 @@ The "require‑instance" statement, which is a substatement to the
 "type" statement, MAY be present if the type is "instance‑identifier",
 "leafref" or a type derived from them.  It takes as an argument the
 string "true" or "false".  If this statement is not present, it
-defaults to "true".
+defaults to "true" or, in the case the type is derived, it defaults
+to value specified by the parent type.
           </t>
           <t>
 If "require‑instance" is "true", it means that the instance being

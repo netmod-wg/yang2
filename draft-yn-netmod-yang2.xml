@@ -42,11 +42,13 @@
         Modeling Working Group mailing list, which is archived at
         <eref target="https://mailarchive.ietf.org/arch/browse/netmod"/>.
         To subscribe: <eref target="https://www.ietf.org/mailman/listinfo/netmod"/></t>
+        <t>The document <xref target="I-D.ietf-netmod-yang-next-agreement"/>
+        attempts to focus the effort extended on this document.</t>
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>).
-        If you wish to contribute, please consider opening a pull request (PR).
-        See the README file for details.</t>
-        <t>See <eref target="https://netmod-wg.github.io/yang2"/>
-        for a dashboard of the document's status.</t>
+        See <eref target="https://netmod-wg.github.io/yang2"/> for
+        a dashboard of the document's status, e.g., PRs, RFC-diffs, etc..</t>
+        <t>If you wish to contribute, please consider opening a
+        pull request (PR).  See the README file for details.</t>
     </note>
   </front>
   <middle>

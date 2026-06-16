@@ -42,7 +42,7 @@
         Modeling Working Group mailing list, which is archived at
         <eref target="https://mailarchive.ietf.org/arch/browse/netmod"/>.
         To subscribe: <eref target="https://www.ietf.org/mailman/listinfo/netmod"/></t>
-        <t>The document <xref target="I-D.ietf-netmod-yang-next-agreement"/>
+        <t>The document <xref target="I-D.wilton-netmod-yang-next-agreement"/>
         attempts to focus the effort extended on this document.</t>
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>).
         See <eref target="https://netmod-wg.github.io/yang2"/> for
@@ -86,7 +86,9 @@
     is a major release of the YANG language. Whilst it is by and large the
     same as RFC 7950, the following changes exist:</t>
         <ol>
-      <li>Removed the "XML Encoding Rules" sections.  This content was moved to the 'yang-xml' document.</li>
+          <li>Applied all the RFC 7950 errata <eref target="https://errata.rfc-editor.org/search/?rfc_number=7950"/>
+              marked as "Verified" and "Held for Document Update".</li>
+          <li>Removed the "XML Encoding Rules" sections.  This content was moved to the 'yang-xml' document.</li>
           <li>Removed the "NETCONF &lt;edit-config&gt; Operations" sections.  This content was moved to the 'netconf-2' document.</li>
           <li>Removed the "NETCONF XML Encoding Rules" sections.  This content was moved to the 'netconf-2' document.</li>
           <li>Removed the "Example Usage" sections.  This content was deemed redundant.</li>
@@ -12577,6 +12579,7 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.yn-netmod-yang-xml.xml"/>
+        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.wilton-netmod-yang-next-agreement.xml"/>
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
           <front>
             <title>XSL Transformations (XSLT) Version 1.0</title>
@@ -12619,25 +12622,59 @@ compromised.
     </references>
     <section numbered="false">
       <name>Acknowledgements</name>
-      <t>The editor wishes to thank the following individuals, who all provided
-        helpful comments on various draft versions of this document: (sorted by
-        first name)</t>
-      <ul>
-        <li>Pending</li>
-      </ul>
       <t>This document builds on top RFC 7950. Please see that
         document's "Acknowledgements" section for additional acknowledgements.</t>
-    </section>
+      <section numbered="false">
+        <name>Errata Submitters</name>
+        <t>The following individuals submitted errata for RFC 7950 that was
+          applied to this document (sorted by first name): 
+            Andy Bierman,
+            Andreas Jakobik,
+            Fred Gan,
+            Jernej Tuljak,
+            Kent Watsen,
+            Ladislav Lhotka,
+            Marek Michalak,
+            Michal Vasko,
+            Muly Ilan,
+            Pawel Koch,
+            Radek Krejci,
+            Rohit R Ranade, and
+            Viktor Leijon.</t>
+      </section>
+      <section numbered="false">
+        <name>YANG-next Issue Scoring Team</name>
+        <t>The following individuals participated in several meetings to score
+          the many issues filed for YANG-next effort (sorted by first name):
+            Andy Bierman,
+            Balazs Lengyel,
+            James Cumming,
+            Jan Lindblad,
+            Jürgen Schönwälder,
+            Kent Watsen,
+            Per Andersson,
+            Qiufang Ma,
+            Reshad Rahman, and
+            Rob Wilton.</t>
+      </section>
+      <section numbered="false">
+        <name>Core Reviewing Team</name>
+        <t>The following individuals were active members of a team that reviewed
+          every update merged to create this document (sorted by first name):
+            Michal Vasko,
+            Qiufang Ma,
+            Reshad Rahman, and
+            Rob Wilton.</t>
+      </section>
     <section numbered="false">
       <name>Contributors</name>
-      <t>The following individuals contributed to this document: (sorted by
-        amount of contribution)</t>
-      <ul>
-        <li>Pending</li>
-      </ul>
       <t>This document builds on top RFC 7950, edited by Martin
         Björklund.  Please see that document's "Contributors" section for
         additional contributors.</t>
+      <t>The following individuals contributed (submitted PRs) to this
+        document (sorted by first name):
+          Kent Watsen</t>
+    </section>
     </section>
   </back>
 </rfc>

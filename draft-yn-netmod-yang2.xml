@@ -12658,7 +12658,7 @@ compromised.
             Rob Wilton.</t>
       </section>
       <section numbered="false">
-        <name>Core Reviewing Team</name>
+        <name>Update Reviewing Team</name>
         <t>The following individuals were active members of a team that reviewed
           every update merged to create this document (sorted by first name):
             Michal Vasko,

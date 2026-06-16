@@ -1841,9 +1841,12 @@ For example, with these modules:
     prefix "a";
 
     import b {
-      revision-date 2015-01-01;
+        revision-date 2015-01-01;
+        prefix b;
     }
-    import c;
+    import c {
+        prefix c;
+    }
 
     revision 2015-01-01;
 
@@ -2322,11 +2325,11 @@ For example, consider the following definition:
     type decimal64 {
       fraction-digits 18;
     }
-    must ". <= 10";
+    must ". <= 9";
   }
             ]]></artwork>
         <t>
-An instance of the "lxiv" leaf having the value of 10.0000000000000001
+An instance of the "lxiv" leaf having the value of 9.0000000000000001
 will then successfully pass validation.
         </t>
         <section anchor="xpath-context">
@@ -2528,7 +2531,7 @@ The accessible tree for a notification "down" on /a/b[id="2"] is:
             <t>
 The accessible tree for an action invocation of "reset" on
 ⁠/a⁠/b[id="1"]
-with the "when" parameter set to "10" would be:
+with the "delay" parameter set to "10" would be:
             </t>
             <artwork><![CDATA[
   <a xmlns="urn:example:a">
@@ -4002,10 +4005,10 @@ by a validator.
     leaf ifMTU {
       type uint32;
     }
-    must 'ifType != "ethernet" or ifMTU = 1500' {
+    must 'string(ifType) != "ethernet" or ifMTU = 1500' {
       error-message "An Ethernet MTU must be 1500";
     }
-    must 'ifType != "atm" or'
+    must 'string(ifType) != "atm" or'
        + ' (ifMTU <= 17966 and ifMTU >= 64)' {
       error-message "An ATM MTU must be 64 .. 17966";
     }
@@ -6685,9 +6688,94 @@ statements for nodes in the notification tree are ignored.
             </tbody>
           </table>
         </section>
-        <!-- FIXME: cannot document in "yang-xml" doc because it doesn't document schema nodes? -->
-</section>
-      <section anchor="augment">
+        <section numbered="true" toc="default">
+          <name>Usage Example</name>
+          <t>
+The following example defines a notification at the top level of a
+module:
+          </t>
+          <artwork name="" type="" align="left" alt=""><![CDATA[
+  module example-event {
+    yang-version 1.1;
+    namespace "urn:example:event";
+    prefix "ev";
+
+    notification event {
+      leaf event-class {
+        type string;
+      }
+      leaf reporting-entity {
+        type instance-identifier;
+      }
+      leaf severity {
+        type string;
+      }
+    }
+  }
+            ]]></artwork>
+          <t>
+A corresponding XML instance example of the complete notification
+follows.  Other encodings (e.g., JSON, CBOR, etc.) are possible.
+This example reports an event for an interface from the
+"example-foo" module defined in Section 13.1.1.
+          </t>
+          <artwork name="" type="" align="left" alt=""><![CDATA[
+  <notification
+    xmlns="urn:ietf:params:xml:ns:netconf:notification:1.0">
+    <eventTime>2008-07-08T00:01:00Z</eventTime>
+    <event xmlns="urn:example:event">
+      <event-class>fault</event-class>
+      <reporting-entity xmlns:ex="urn:example:foo">
+        /ex:interface[ex:name='Ethernet0']
+      </reporting-entity>
+      <severity>major</severity>
+    </event>
+  </notification>
+            ]]></artwork>
+          <t>
+The following example defines a notification in a data node:
+          </t>
+          <artwork name="" type="" align="left" alt=""><![CDATA[
+  module example-interface-module {
+    yang-version 1.1;
+    namespace "urn:example:interface-module";
+    prefix "if";
+
+    container interfaces {
+      list interface {
+        key "name";
+        leaf name {
+          type string;
+        }
+        notification interface-enabled {
+          leaf by-user {
+            type string;
+          }
+        }
+      }
+    }
+  }
+            ]]></artwork>
+          <t>
+A corresponding XML instance example of the complete notification:
+          </t>
+          <artwork name="" type="" align="left" alt=""><![CDATA[
+  <notification
+    xmlns="urn:ietf:params:xml:ns:netconf:notification:1.0">
+    <eventTime>2008-07-08T00:01:00Z</eventTime>
+    <interfaces xmlns="urn:example:interface-module">
+      <interface>
+        <name>eth1</name>
+        <interface-enabled>
+          <by-user>fred</by-user>
+        </interface-enabled>
+      </interface>
+    </interfaces>
+  </notification>
+            ]]></artwork>
+        </section>
+      </section>
+      <section anchor="augment" numbered="true" toc="default">
         <name>The "augment" Statement</name>
         <t>
 The "augment" statement allows a module or submodule to add to a
@@ -6710,7 +6798,7 @@ MUST be used.  If the "augment" statement is a substatement to the
         </t>
         <t>
 If the target node is a container, list, case, input, output, or
-notification node, the "container", "leaf", "list", "leaf‑list",
+notification node, the "anydata", "anyxml", "container", "leaf", "list", "leaf‑list",
 "uses", and "choice" statements can be used within the "augment"
 statement.
         </t>
@@ -7590,7 +7678,7 @@ statement.  The properties to replace MUST exist in the target node.
             </t>
             <t>
 The argument "delete" deletes properties from the target node.  The
-properties to delete are identified by substatements to the "delete"
+properties to delete are identified by substatements to the "deviate"
 statement.  The substatement's keyword MUST match a corresponding
 keyword in the target node, and the argument's string MUST be equal to
 the corresponding keyword's argument string in the target node.
@@ -7880,9 +7968,9 @@ context, in addition to the definition in <xref target="xpath-context"/>:
               <t>
 If the "when" statement is a child of an "augment" statement, then
 the context node is the augment's target node in the data tree, if
-the target node is a data node.  Otherwise, the context node is the
+the target node is a data node, rpc, action, or notification.  Otherwise, the context node is the
 closest ancestor node to the target node that is also a data
-node.  If no such node exists, the context node is the root node.
+node, rpc, action, or notification.  If no such node exists, the context node is the root node.
 The accessible tree is tentatively altered during the
 processing of the XPath expression by removing all instances (if
 any) of the nodes added by the "augment" statement.
@@ -7892,7 +7980,7 @@ any) of the nodes added by the "augment" statement.
               <t>
 If the "when" statement is a child of a "uses", "choice", or "case"
 statement, then the context node is the closest ancestor node to the
-node with the "when" statement that is also a data node.  If no
+node with the "when" statement that is also a data node, rpc, action, or notification.  If no
 such node exists, the context node is the root node.
 The accessible tree is tentatively altered during the
 processing of the XPath expression by removing all instances (if
@@ -9400,9 +9488,12 @@ which the "path" statement is defined.
           <name>The "require-instance" Statement</name>
           <t>
 The "require‑instance" statement, which is a substatement to the
-"type" statement, MAY be present if the type is "instance‑identifier"
-or "leafref".  It takes as an argument the string "true" or "false".
-If this statement is not present, it defaults to "true".
+"type" statement, MAY be present if the type is "instance‑identifier",
+"leafref" or a type derived from them.  It takes as an argument the
+string "true" or "false".  If this statement is not present, it
+defaults to "true".  Tn the case the type is derived, it defaults
+to the value specified by the closest parent type having the value
+set, if any, else it defaults to "true".
           </t>
           <t>
 If "require‑instance" is "true", it means that the instance being
@@ -10170,10 +10261,10 @@ submodule.
             ]]></artwork>
           <t>
 The derived-from-or-self() function returns "true" if any node in the
-argument "nodes" is a node of type "identityref" and
-its value is an identity that is equal to or derived from
-(see <xref target="base"/>) the identity "identity"; otherwise,
-it returns "false".
+argument "nodes" is a node of type "identityref" or a type derived
+from "identityref", and its value is an identity that is equal to or
+derived from (see <xref target="base"/>) the identity "identity";
+otherwise, it returns "false".
           </t>
           <t>
 The parameter "identity" is a string matching the rule
@@ -10191,7 +10282,7 @@ The module defined in <xref target="derived-from-ex"/> might also have:
             </t>
             <artwork><![CDATA[
     augment "/interface" {
-      when 'derived-from-or-self(type, "exif:fast-ethernet");
+      when 'derived-from-or-self(type, "exif:fast-ethernet")';
       // Fast-Ethernet-specific definitions here
     }
             ]]></artwork>
@@ -10276,7 +10367,7 @@ If an interface has this leaf:
   leaf flags {
     type bits {
       bit UP;
-      bit PROMISCUOUS
+      bit PROMISCUOUS;
       bit DISABLED;
     }
    }
@@ -10414,7 +10505,7 @@ provided there is at least one "base" statement left.
         </li>
         <li>
           <t>
-New typedefs, groupings, rpcs, notifications, extensions, features,
+New typedefs, groupings, rpcs, actions, notifications, extensions, features,
 and identities may be added.
           </t>
         </li>
@@ -11961,7 +12052,17 @@ quoted-string       = (DQUOTE string DQUOTE) / (SQUOTE string SQUOTE)
 path-arg-str        = < a string that matches the rule >
                       < path-arg >
 
-path-arg            = absolute-path / relative-path
+path-arg            = deref-expr / path-str
+
+deref-expr          = deref-function-invocation *WSP "/" *WSP
+                      relative-path
+
+path-str            = absolute-path / relative-path
+
+deref-function-invocation = deref-keyword *WSP
+                            "(" *WSP path-str *WSP ")"
+
+deref-keyword       = %s"deref"
 
 absolute-path       = 1*("/" (node-identifier *path-predicate))
 

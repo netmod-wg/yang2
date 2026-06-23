@@ -1626,7 +1626,7 @@ this convention.
         <t>
 All YANG definitions are specified within a module.  Each module is
 bound to a distinct namespace.  Network management protocols, such
-as NETCONF or RESTCONF, uses the namespace during encoding of data.
+as NETCONF and RESTCONF, use the namespace when encoding of data.
         </t>
         <t>
 The "namespace" statement is covered in <xref target="namespace"/>.

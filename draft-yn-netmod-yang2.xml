@@ -72,7 +72,7 @@
     <xref target="RFC8040"/>, CORECONF <xref target="I-D.ietf-core-comi"/>,
     etc.) are out of scope for this specification.</t>
       <t>This document describes the syntax and semantics of version 2.0
-    of the YANG language (YANG 1.1). YANG 2.0 is a major
+    of the YANG language (YANG 2.0). YANG 2.0 is a major
     release of the YANG language, addressing issues in the
     original specification (see <xref target="changes"/>).</t>
       <t>Note that this document does not obsolete RFC 6020 <xref target="RFC6020"/>
@@ -762,7 +762,7 @@ These statements are combined to define the module:
             <artwork><![CDATA[
   // Contents of "example-system.yang"
   module example-system {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:system";
     prefix "sys";
 
@@ -1475,7 +1475,7 @@ specified in the "import" statement.
         <t>
 For backward compatibility with YANG version 1, a submodule
 MAY use the "include" statement to reference other submodules
-within its module, but this is not necessary in YANG version 1.1.  A
+within its module, but this is not necessary in YANG versions 1.1 and 2.0.  A
 submodule can reference any definition in the module it belongs to and
 in all submodules included by the module.  A submodule MUST NOT
 include different revisions of other submodules than the revisions
@@ -1549,7 +1549,7 @@ For example, module "b" imports module "a".
           </t>
           <artwork><![CDATA[
   module a {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:a";
     prefix "a";
 
@@ -1560,7 +1560,7 @@ For example, module "b" imports module "a".
   }
 
   module b {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:b";
     prefix "b";
 
@@ -1840,7 +1840,7 @@ For example, with these modules:
           </t>
           <artwork><![CDATA[
   module a {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:a";
     prefix "a";
 
@@ -1871,7 +1871,7 @@ For example, with these modules:
   }
 
   module b {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:b";
     prefix "b";
 
@@ -1888,7 +1888,7 @@ For example, with these modules:
   }
 
   module b {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:b";
     prefix "b";
 
@@ -1908,7 +1908,7 @@ For example, with these modules:
   }
 
   module c {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:c";
     prefix "c";
 
@@ -1920,7 +1920,7 @@ For example, with these modules:
   }
 
   module c {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:c";
     prefix "c";
 
@@ -2464,7 +2464,7 @@ Given the following module:
             </t>
             <artwork><![CDATA[
   module example-a {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace urn:example:a;
     prefix a;
 
@@ -2863,7 +2863,9 @@ A module or submodule that doesn't contain the "yang‑version"
 statement, or one that contains the value "1", is developed for YANG
 version 1, defined in <xref target="RFC6020"/>.  A module or submodule that
 contains the "yang‑version" with value "1.1" is developed
-for YANG version 1.1, defined in <xref target="RFC7950"/>.
+for YANG version 1.1, defined in <xref target="RFC7950"/>. A
+module or submodule that contains the "yang‑version" with value "2.0"
+is developed for YANG version 2.0, defined in this document.
           </t>
           <t>
 Handling of the "yang‑version" statement for versions other than "2.0"
@@ -3034,9 +3036,9 @@ When a module includes a submodule, it incorporates the contents of
 the submodule into the node hierarchy of the module.
           </t>
           <t>
-For backward compatibility with YANG version 1.1, a submodule is
+For backward compatibility with YANG version 1, a submodule is
 allowed to include another submodule belonging to the same module, but
-this is not necessary in YANG version 2.0 (see <xref target="modules"/>).
+this is not necessary in YANG versions 1.1 or 2.0 (see <xref target="modules"/>).
           </t>
           <t>
 When the optional "revision‑date" substatement is present, the
@@ -3145,7 +3147,7 @@ chronological order.
           </t>
           <artwork><![CDATA[
   module example-system {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:system";
     prefix "sys";
 
@@ -3445,7 +3447,7 @@ the prefix.
           <name>Usage Example</name>
           <artwork><![CDATA[
   submodule example-types {
-    yang-version 1.1;
+    yang-version 2.0;
     belongs-to "example-system" {
       prefix "sys";
     }
@@ -6700,7 +6702,7 @@ module:
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
   module example-event {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:event";
     prefix "ev";
 
@@ -6721,7 +6723,7 @@ module:
 A corresponding XML instance example of the complete notification
 follows.  Other encodings (e.g., JSON, CBOR, etc.) are possible.
 This example reports an event for an interface from the
-"example-foo" module defined in Section 13.1.1.
+"example-foo" module defined in <xref target="yin-usage-example"/>.
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
   <notification
@@ -6741,7 +6743,7 @@ The following example defines a notification in a data node:
           </t>
           <artwork name="" type="" align="left" alt=""><![CDATA[
   module example-interface-module {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:interface-module";
     prefix "if";
 
@@ -6836,7 +6838,7 @@ data node.
         </t>
         <artwork><![CDATA[
   module example-augment {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:augment";
     prefix mymod;
 
@@ -7218,7 +7220,7 @@ and C is derived from B, then C is also derived from A.
           <name>Usage Example</name>
           <artwork><![CDATA[
   module example-crypto-base {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:crypto-base";
     prefix "crypto";
 
@@ -7242,7 +7244,7 @@ and C is derived from B, then C is also derived from A.
   }
 
   module example-des {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:des";
     prefix "des";
 
@@ -7388,7 +7390,7 @@ To define an extension:
           </t>
           <artwork><![CDATA[
   module example-extensions {
-    yang-version 1.1;
+    yang-version 2.0;
     ...
 
     extension c-define {
@@ -7405,7 +7407,7 @@ To use the extension:
           </t>
           <artwork><![CDATA[
   module example-interfaces {
-    yang-version 1.1;
+    yang-version 2.0;
 
     ...
     import example-extensions {
@@ -7456,7 +7458,7 @@ server does not report that it supports this feature, the
           </t>
           <artwork><![CDATA[
   module example-syslog {
-    yang-version 1.1;
+    yang-version 2.0;
 
     ...
     feature local-storage {
@@ -7767,7 +7769,7 @@ does not support the "daytime" service in the style of RFC 867.
             </t>
             <artwork><![CDATA[
   module example-deviations {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:deviations";
     prefix md;
 
@@ -9767,7 +9769,7 @@ module:
           </t>
           <artwork><![CDATA[
   module example-my-crypto {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:my-crypto";
     prefix mc;
 
@@ -10221,7 +10223,7 @@ submodule.
             <name>Usage Example</name>
             <artwork><![CDATA[
   module example-interface {
-    yang-version 1.1;
+    yang-version 2.0;
 
     ...
     identity interface-type;
@@ -11054,14 +11056,14 @@ Comments in YANG MAY be mapped to XML comments.
             </tr>
           </tbody>
         </table>
-        <section>
+        <section anchor="yin-usage-example">
           <name>Usage Example</name>
           <t>
 The following YANG module:
           </t>
           <artwork><![CDATA[
   module example-foo {
-    yang-version 1.1;
+    yang-version 2.0;
     namespace "urn:example:foo";
     prefix "foo";
 
@@ -11203,7 +11205,7 @@ yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
 yang-version-arg-str = < a string that matches the rule >
                        < yang-version-arg >
 
-yang-version-arg    = "1.1"
+yang-version-arg    = "2.0"
 
 import-stmt         = import-keyword sep identifier-arg-str optsep
                       "{" stmtsep

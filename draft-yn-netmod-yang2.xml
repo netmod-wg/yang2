@@ -43,7 +43,7 @@
         <eref target="https://mailarchive.ietf.org/arch/browse/netmod"/>.
         To subscribe: <eref target="https://www.ietf.org/mailman/listinfo/netmod"/></t>
         <t>The document <xref target="I-D.wilton-netmod-yang-next-agreement"/>
-        attempts to focus the effort extended on this document.</t>
+        helps to focus the effort extended on this document.</t>
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>).
         See <eref target="https://netmod-wg.github.io/yang2"/> for
         a dashboard of the document's status, e.g., PRs, RFC-diffs, etc..</t>

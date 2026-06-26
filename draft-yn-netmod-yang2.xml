@@ -8111,8 +8111,10 @@ All "must" constraints MUST evaluate to "true".
           </li>
           <li>
             <t>
-All referential integrity constraints defined via the "path"
-statement MUST be satisfied.
+              All referential integrity constraints defined by the value
+              of a leaf with the "instance-identifier" type or via the
+              "path" statement of the "leafref" type MUST be satisfied
+              if the "require-instance" property for that type is true.
             </t>
           </li>
           <li>

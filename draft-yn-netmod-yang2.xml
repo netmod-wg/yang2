@@ -3054,7 +3054,7 @@ revision of the submodule is included.
 Multiple revisions of the same submodule MUST NOT be included.
           </t>
           <table>
-            <name>The includes's Substatements</name>
+            <name>The include's Substatements</name>
             <thead>
               <tr>
                 <th align="left">substatement</th>

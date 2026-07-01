@@ -66,7 +66,7 @@
     an application's data model, both its API and persistence layers can be
     automatically generated.</t>
       <t>YANG is a high-level data modeling language, independent of any specific
-    encoding or any specific protocol.  Encodings (e.g., XML <xref target="I-D.yn-netmod-yang-xml"/>,
+    encoding or any specific protocol.  Encodings (e.g., XML <xref target="I-D.ietf-netmod-yang-xml"/>,
     JSON <xref target="RFC7951"/>, CBOR <xref target="RFC9254"/>, etc.)
     and protocols (e.g., NETCONF <xref target="RFC6241"/>, RESTCONF
     <xref target="RFC8040"/>, CORECONF <xref target="I-D.ietf-core-comi"/>,
@@ -2882,11 +2882,11 @@ For compatibility between YANG versions, see <xref target="coexistence"/>.
           <t>The "namespace" statement defines the XML namespace
       <xref target="XML-NAMES"/>, which is a globally unique URI
       <xref target="RFC3986"/>, that all identifiers defined by the module
-      are qualified by in the XML encoding <xref target="I-D.yn-netmod-yang-xml"/>,
+      are qualified by in the XML encoding <xref target="I-D.ietf-netmod-yang-xml"/>,
       with the exception of identifiers for data nodes, action nodes,
       and notification nodes defined inside a grouping (see <xref target="uses"/>
       for details).  The argument to the "namespace" statement
-      is the URI of the namespace.  See <xref section="4" target="I-D.yn-netmod-yang-xml"/>
+      is the URI of the namespace.  See <xref section="4" target="I-D.ietf-netmod-yang-xml"/>
       for details.</t>
           <t>For modules published in RFC streams <xref target="RFC8729"/>, the
       namespace MUST be assigned by IANA; see Section 14 in <xref target="RFC6020"/>.
@@ -9760,7 +9760,7 @@ Since the lexical form depends on the encoding context in which the
 value occurs, this type does not have a canonical form.
 Specifically, the value may or may not be prefixed.  Furthermore,
 in some encodings, the prefix used may be locally defined (see
-<xref section="identityref" target="I-D.yn-netmod-yang-xml"/>).
+<xref section="identityref" target="I-D.ietf-netmod-yang-xml"/>).
           </t>
         </section>
         <section>
@@ -12582,7 +12582,7 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9907.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.yn-netmod-yang-xml.xml"/>
+        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netmod-yang-xml.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.wilton-netmod-yang-next-agreement.xml"/>
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
           <front>

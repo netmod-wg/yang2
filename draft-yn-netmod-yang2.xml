@@ -46,7 +46,7 @@
         helps to focus the effort extended on this document.</t>
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>.
         See <eref target="https://netmod-wg.github.io/yang2"/> for
-        a dashboard of the document's status, e.g., PRs, RFC-diffs, etc..</t>
+        a dashboard of the document's status, e.g., PRs, RFC-diffs, etc.</t>
         <t>If you wish to contribute, please consider opening a
         pull request (PR).  See the README file for details.</t>
     </note>

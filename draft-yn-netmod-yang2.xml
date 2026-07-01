@@ -530,6 +530,9 @@ This section introduces some important constructs used in YANG that
 will aid in the understanding of the language specifics in later
 sections.
         </t>
+        <t>Examples in this section use both the JSON and XML
+          encodings, described in <xref target="RFC7951"/> and
+          <xref target="I-D.ietf-netmod-yang-xml"/> respectively.</t>
         <section>
           <name>Modules and Submodules</name>
           <t>

@@ -1439,7 +1439,7 @@ The "notification" statement is covered in <xref target="notification"/>.
         <section>
           <name>YANG 2.0 Conformance</name>
           <t>This section specifies what behavior a server claiming to support YANG 2.0 must support.</t>
-          <t>Nothing yet...</t>
+          <t>No conformance rules have been defined yet.</t>
         </section>
       </section>
     </section>

@@ -1178,8 +1178,8 @@ user's "class" is not "wheel".
           <t>
 If a module augments another module, the nodes that are added
 to the encoding are in the namespace of the augmenting module.  For
-example, if the above augmentation were in a module with prefix
-"other", the encoding would look like:
+example, if the above augmentation were in a module named "my-other"
+with prefix "other", the encoding would look like:
           </t>
           <t>
 XML Encoding Example:
@@ -1198,7 +1198,7 @@ XML Encoding Example:
     "name": "alicew",
     "full-name": "Alice N. Wonderland",
     "class": "drop-out",
-    "my-example:uid": 1024
+    "my-other:uid": 1024
   }
             ]]></artwork>
           <t>

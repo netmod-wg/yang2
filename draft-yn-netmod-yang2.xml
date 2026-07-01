@@ -12423,14 +12423,8 @@ an instance that does not exist, the following error MUST be returned:
     <section anchor="iana">
       <name>IANA Considerations</name>
       <t>
-This document registers one capability identifier URN from the
-"Network Configuration Protocol (NETCONF) Capability URNs" registry:
+        Nothing yet.
       </t>
-      <artwork><![CDATA[
-  Index           Capability Identifier
-  -------------   ---------------------------------------------------
-  :yang-library   urn:ietf:params:netconf:capability:yang-library:1.0
-            ]]></artwork>
     </section>
     <section>
       <name>Security Considerations</name>
@@ -12440,10 +12434,6 @@ descriptions of management information. The language itself has no
 security impact on the Internet.
       </t>
       <t>
-The same considerations are relevant as those for the base NETCONF protocol
-(see Section 9 in <xref target="RFC6241"/>).
-      </t>
-      <t>
 Data modeled in YANG might contain sensitive information. RPCs
 or notifications defined in YANG might transfer sensitive information.
       </t>
@@ -12451,7 +12441,7 @@ or notifications defined in YANG might transfer sensitive information.
 Security issues are related to the usage of data modeled in YANG.
 Such issues shall be dealt with in documents describing the
 data models and documents about the interfaces used to manipulate
-the data, e.g., the NETCONF documents.
+the data, e.g., NETCONF and RESTCONF documents.
       </t>
       <t>
 Data modeled in YANG is dependent upon:

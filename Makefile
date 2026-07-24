@@ -9,7 +9,7 @@ kramdown-rfc2629 ?= kramdown-rfc2629
 oxtradoc ?= oxtradoc
 idnits ?= idnits
 
-DRAFTS := draft-yn-netmod-yang2
+DRAFTS := draft-ietf-netmod-yang2
 
 default:
 	@for draft in $(DRAFTS); do \

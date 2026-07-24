@@ -1,6 +1,6 @@
 # YANG 2
 
-This is the repository for the document `draft-yn-netmod-yang2`
+This is the repository for the document `draft-ietf-netmod-yang2`
 (The YANG 2.0 Data Modeling Language).
 
 Dashboard: https://netmod-wg.github.io/yang2

@@ -88,7 +88,7 @@ jobs:
         run: echo "SUMMARY_LINE=$(cat idnits.out | tail -n 2 | head -n 1)" >> $GITHUB_ENV
       - name: Test summary line for errors
         run: |
-          echo "${{env.SUMMARY_LINE}}" | grep -q "1 errors" || {
+          echo "${{env.SUMMARY_LINE}}" | grep -q "1 error" || {
             echo "::error::Idnits returned more than one error.
             echo "Allowed error is for idnits thinking the Note is part of the Abstract."
             exit 1

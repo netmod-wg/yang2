@@ -18,7 +18,7 @@ thus setting a baseline for subsequent changes.  This is accomplished by:
   - removing the "Example Usage" sections.
   - making remaining examples be both XML and JSON.
 
-XML-specific text moves to `draft-yn-netmod-yang-xml` (XML Encoding
+XML-specific text moves to `draft-ietf-netmod-yang-xml` (XML Encoding
 of Data Modeled with YANG).
 
 

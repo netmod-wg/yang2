@@ -31,6 +31,7 @@ jobs:
           cd mysite
           curl -O https://netmod-wg.github.io/yang2/drafts.tgz
           tar -xzvf drafts.tgz
+          rm -rf make-baseline/
           rm drafts.tgz
 
       # if merged... (i.e., PR succeeded)

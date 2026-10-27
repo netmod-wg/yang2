@@ -85,8 +85,8 @@ jobs:
           rm drafts.tgz
           tree
           ls main/
-          ls -1 main/draft-yn-netmod-yang2-[0-9][0-9].xml
-          TAG=`ls -1 main/draft-yn-netmod-yang2-[0-9][0-9].xml | sed -e 's/\.xml$//'`
+          ls -1 main/draft-ietf-netmod-yang2-[0-9][0-9].xml
+          TAG=`ls -1 main/draft-ietf-netmod-yang2-[0-9][0-9].xml | sed -e 's/\.xml$//'`
           echo "TAG=$TAG"
           git tag $TAG
           git push --tags

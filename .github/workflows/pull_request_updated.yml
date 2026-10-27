@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: all-artifacts
-          path: draft-yn-netmod-*-[0-9][0-9].*
+          path: draft-ietf-netmod-*-[0-9][0-9].*
 
 # DISABLED because unable to get it to work (rfclint maintained?)
 #  rfclint:
@@ -83,7 +83,7 @@ jobs:
           git checkout v2
       - name: Run idnits
         run: |
-          ./idnits/idnits --verbose draft-yn-netmod-yang2-[0-9][0-9].txt | tee idnits.out
+          ./idnits/idnits --verbose draft-ietf-netmod-yang2-[0-9][0-9].txt | tee idnits.out
       - name: Extract summary line
         run: echo "SUMMARY_LINE=$(cat idnits.out | tail -n 2 | head -n 1)" >> $GITHUB_ENV
       - name: Test summary line for errors
@@ -108,7 +108,7 @@ jobs:
 #      - name: Download a single artifact
 #        uses: actions/download-artifact@v4
 #        with:
-#          name: draft-yn-netmod-yang2-[0-9][0-9].txt
+#          name: draft-ietf-netmod-yang2-[0-9][0-9].txt
 #      - name: Install node
 #        run: |
 #          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -122,7 +122,7 @@ jobs:
 #          npm install -g @ietf-tools/idnits
 #      - name: Run idnits
 #        run: |
-#          idnits draft-yn-netmod-yang2-[0-9][0-9].txt  | tee idnits.out
+#          idnits draft-ietf-netmod-yang2-[0-9][0-9].txt  | tee idnits.out
 #      - name: Test idnits Output
 #        run: |
 #            grep -q "Summary: 1 error" idnits.out
@@ -198,7 +198,7 @@ jobs:
       # mv all artifacts into the mysite/<branch>/ directory
       - name: Move drafts into branch dir
         run: |
-          mv draft-yn-netmod-*-[0-9][0-9].* mysite/${{github.head_ref}}/
+          mv draft-ietf-netmod-*-[0-9][0-9].* mysite/${{github.head_ref}}/
           mv rfc7950.* mysite/${{github.head_ref}}/
 
       # stash some metadata

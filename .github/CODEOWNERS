@@ -2,6 +2,6 @@
 @netmod-wg/yang2-global
 
 # codeowners
-draft-yn-netmod-yang2* @netmod-wg/yang2-codeowners
+draft-ietf-netmod-yang2* @netmod-wg/yang2-codeowners
 /designs/ @netmod-wg/yang2-codeowners
 

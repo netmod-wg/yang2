@@ -13,7 +13,7 @@
 <?rfc sortrefs="yes"?>
 <?rfc iprnotified="no"?>
 <?rfc strict="yes"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="std" submissionType="IETF" consensus="true" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3" docName="draft-yn-netmod-yang2-latest">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="std" submissionType="IETF" consensus="true" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3" docName="draft-ietf-netmod-yang2-latest">
   <front>
     <title abbrev="YANG 2.0">The YANG 2.0 Data Modeling Language</title>
     <author initials="K" surname="Watsen" fullname='Kent Watsen' role="editor">
@@ -42,7 +42,7 @@
         Modeling Working Group mailing list, which is archived at
         <eref target="https://mailarchive.ietf.org/arch/browse/netmod"/>.
         To subscribe: <eref target="https://www.ietf.org/mailman/listinfo/netmod"/></t>
-        <t>The document <xref target="I-D.wilton-netmod-yang-next-agreement"/>
+        <t>The document <xref target="I-D.ietf-netmod-yang-next-agreement"/>
         helps to focus the effort extended on this document.</t>
         <t>This document is developed on GitHub at <eref target="https://github.com/netmod-wg/yang2"/>.
         See <eref target="https://netmod-wg.github.io/yang2"/> for
@@ -12576,7 +12576,7 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9911.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
         <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netmod-yang-xml.xml"/>
-        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.wilton-netmod-yang-next-agreement.xml"/>
+        <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-netmod-yang-next-agreement.xml"/>
         <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
           <front>
             <title>XSL Transformations (XSLT) Version 1.0</title>

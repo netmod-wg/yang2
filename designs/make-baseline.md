@@ -8,17 +8,17 @@ good basis for YANG 2.0.
 
 ## General Steps
 
-1) Copy `rfc7950.xml` to `draft-yn-netmod-yang2.xml`
+1) Copy `rfc7950.xml` to `draft-ietf-netmod-yang2.xml`
 
   - Note that file `rfc7950.xml` is from the Editor and was updated
     to `v3` using `xml2rfc --v2v3`.
 
-2) Move XML-encoding details to `draft-yn-netmod-yang-xml.xml`.
+2) Move XML-encoding details to `draft-ietf-netmod-yang-xml.xml`.
 
   - The `yang-xml` document is in a different GitHub repo, here:
     https://github.com/netmod-wg/yang-xml.
 
-  - There are XML-comments in `draft-yn-netmod-yang-xml.xml` that
+  - There are XML-comments in `draft-ietf-netmod-yang-xml.xml` that
     point to where content was pulled from in this document.
 
 3) Delete any NETCONF-specific details 

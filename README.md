@@ -1,6 +1,6 @@
 # YANG 2
 
-This is the repository for the document `draft-yn-netmod-yang2`
+This is the repository for the document `draft-ietf-netmod-yang2`
 (The YANG 2.0 Data Modeling Language).
 
 Dashboard: https://netmod-wg.github.io/yang2
@@ -18,7 +18,7 @@ thus setting a baseline for subsequent changes.  This is accomplished by:
   - removing the "Example Usage" sections.
   - making remaining examples be both XML and JSON.
 
-XML-specific text moves to `draft-yn-netmod-yang-xml` (XML Encoding
+XML-specific text moves to `draft-ietf-netmod-yang-xml` (XML Encoding
 of Data Modeled with YANG).
 
 

@@ -98,6 +98,7 @@
           <li>Each "NETCONF XML Example" in <xref target="lang-over"/> (Language Overview)
           now has a matching "RESTCONF JSON Example".</li>
           <li>Added a "Protocols Mappings" section.</li>
+          <li>Removed the "anyxml" statement.  Imports alias "anyxml" to "anydata".</li>
         </ol>
       </section>
     </section>
@@ -125,12 +126,7 @@ action: An operation defined for a node in the data tree.
         <li>
           <t>
 anydata: A data node that can contain an unknown set of nodes that
-can be modeled by YANG, except anyxml.
-          </t>
-        </li>
-        <li>
-          <t>
-anyxml: A data node that can contain an unknown chunk of XML data.
+can be modeled by YANG.
           </t>
         </li>
         <li>
@@ -181,7 +177,7 @@ data definition statement: A statement that defines new data
 nodes.  One of "container", "leaf",
 "leaf‑list", "list", "choice",
 "case", "augment", "uses",
-"anydata", and "anyxml".
+and "anydata".
           </t>
         </li>
         <li>
@@ -193,8 +189,7 @@ accessed.
         <li>
           <t>
 data node: A node in the schema tree that can be instantiated in a
-data tree.  One of container, leaf, leaf-list, list, anydata, and
-anyxml.
+data tree.  One of container, leaf, leaf-list, list, and anydata.
           </t>
         </li>
         <li>
@@ -281,7 +276,7 @@ mandatory node: A mandatory node is one of:
           <ul spacing="normal">
             <li>
               <t>
-A leaf, choice, anydata, or anyxml node with a "mandatory" statement
+A leaf, choice, or anydata node with a "mandatory" statement
 with the value "true".
               </t>
             </li>
@@ -332,7 +327,7 @@ RPC operation: A specific Remote Procedure Call.
           <t>
 schema node: A node in the schema tree.  One of action, container, leaf,
 leaf-list, list, choice, case, rpc, input, output,
-notification, anydata, and anyxml.
+notification, and anydata.
           </t>
         </li>
         <li>
@@ -2236,7 +2231,7 @@ that grouping, and it MUST NOT define a grouping with the same name.
             <li>
               <t>
 All leafs, leaf-lists, lists, containers, choices, rpcs, actions,
-notifications, anydatas, and anyxmls defined (directly or through a
+notifications, and anydatas defined (directly or through a
 "uses" statement) within a parent node or at the top level
 of the module or its submodules share the same identifier namespace.
 This namespace is scoped to the parent node or module, unless the
@@ -2705,12 +2700,6 @@ A module typically has the following layout:
                 <td align="left">0..n</td>
               </tr>
               <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
                 <td align="left">augment</td>
                 <td align="left">
                   <xref format="counter" target="augment"/></td>
@@ -2991,6 +2980,11 @@ module they are taken.
 Multiple revisions of the same module can be imported, provided that
 different prefixes are used.
           </t>
+          <t>
+If a yang-version 2.0 module imports a 1.0 or 1.1 module containing the
+`anyxml` statement, the `anyxml` statement  is aliased to and processed
+as an `anydata` statement.
+          </t>
           <table>
             <name>The import's Substatements</name>
             <thead>
@@ -3265,12 +3259,6 @@ A submodule typically has the following layout:
                 <td align="left">anydata</td>
                 <td align="left">
                   <xref format="counter" target="anydata"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
                 <td align="left">0..n</td>
               </tr>
               <tr>
@@ -3781,12 +3769,6 @@ the existence of the container in the data tree.
                 <td align="left">0..n</td>
               </tr>
               <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
                 <td align="left">choice</td>
                 <td align="left">
                   <xref format="counter" target="choice"/></td>
@@ -4056,7 +4038,7 @@ See <xref target="container-presence"/> for additional information.
           <name>The container's Child Node Statements</name>
           <t>
 Within a container, the "container", "leaf", "list", "leaf‑list",
-"uses", "choice", "anydata", and "anyxml" statements can be used to
+"uses", "choice", and "anydata" statements can be used to
 define child nodes to the container.
           </t>
         </section>
@@ -4732,12 +4714,6 @@ if defined.
                 <td align="left">0..n</td>
               </tr>
               <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
                 <td align="left">choice</td>
                 <td align="left">
                   <xref format="counter" target="choice"/></td>
@@ -4984,7 +4960,7 @@ taken into account when the "unique" constraint is enforced:
           <name>The list's Child Node Statements</name>
           <t>
 Within a list, the "container", "leaf", "list", "leaf‑list", "uses",
-"choice", "anydata", and "anyxml" statements can be used to define
+"choice", and "anydata" statements can be used to define
 child nodes to the list.
           </t>
         </section>
@@ -5073,12 +5049,6 @@ cases inside the choice.
                 <td align="left">anydata</td>
                 <td align="left">
                   <xref format="counter" target="anydata"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
                 <td align="left">0..n</td>
               </tr>
               <tr>
@@ -5180,7 +5150,7 @@ The identifier is used to identify the case node in the schema
 tree.  A case node does not exist in the data tree.
           </t>
           <t>
-Within a "case" statement, the "anydata", "anyxml", "choice", "container",
+Within a "case" statement, the "anydata", "choice", "container",
 "leaf", "list", "leaf‑list", and "uses" statements can be used to
 define child nodes to the case node.  The identifiers of all these
 child nodes MUST be unique within all cases in a choice.  For example,
@@ -5198,7 +5168,7 @@ the following is illegal:
             ]]></artwork>
           <t>
 As a shorthand, the "case" statement can be omitted if the branch
-contains a single "anydata", "anyxml", "choice", "container", "leaf",
+contains a single "anydata", "choice", "container", "leaf",
 "list", or "leaf‑list" statement.  In this case, the case node still
 exists in the schema tree, and its identifier is the same as the
 identifier of the child node.  Schema node identifiers
@@ -5238,12 +5208,6 @@ The case identifier MUST be unique within a choice.
                   <td align="left">anydata</td>
                   <td align="left">
                     <xref format="counter" target="anydata"/></td>
-                  <td align="left">0..n</td>
-                </tr>
-                <tr>
-                  <td align="left">anyxml</td>
-                  <td align="left">
-                    <xref format="counter" target="anyxml"/></td>
                   <td align="left">0..n</td>
                 </tr>
                 <tr>
@@ -5483,7 +5447,7 @@ substatements that holds detailed anydata information.
         </t>
         <t>
 The "anydata" statement is used to represent an unknown set of nodes
-that can be modeled with YANG, except anyxml, but for which the data
+that can be modeled with YANG for which the data
 model is not known at module design time.  It is possible, though not
 required, for the data model for anydata content to become known
 through protocol signaling or other means that are outside the scope
@@ -5608,126 +5572,6 @@ The following is a valid encoding of such a list instance:
             ]]></artwork>
         </section>
       </section>
-      <section anchor="anyxml">
-        <name>The "anyxml" Statement</name>
-        <t>
-The "anyxml" statement defines an interior node in the schema tree.
-It takes one argument, which is an identifier, followed by a block of
-substatements that holds detailed anyxml information.
-        </t>
-        <t>
-The "anyxml" statement is used to represent an unknown chunk of XML.  No
-restrictions are placed on the XML.  This can be useful, for example,
-in RPC replies.  An example is the &lt;filter&gt; parameter in the
-&lt;get‑config&gt; operation in NETCONF.
-        </t>
-        <t>
-An anyxml node cannot be augmented (see <xref target="augment"/>).
-        </t>
-        <t>
-An anyxml node exists in zero or one instance in the data tree.
-        </t>
-        <t>
-Since the use of anyxml limits the manipulation of the content,
-the "anyxml" statement SHOULD NOT be used to define
-configuration data.
-        </t>
-        <t>
-It should be noted that in YANG version 1, "anyxml" was the
-only statement that could model an unknown hierarchy of data.  In many
-cases, this unknown hierarchy of data is actually modeled in YANG, but
-the specific YANG data model is not known at design time.  In these
-situations, it is RECOMMENDED to use "anydata"
-(<xref target="anydata"/>) instead of "anyxml".
-        </t>
-        <section>
-          <name>The anyxml's Substatements</name>
-          <table>
-            <thead>
-              <tr>
-                <th align="left">substatement</th>
-                <th align="left">section</th>
-                <th align="left">cardinality</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td align="left">config</td>
-                <td align="left">
-                  <xref format="counter" target="config"/></td>
-                <td align="left">0..1</td>
-              </tr>
-              <tr>
-                <td align="left">description</td>
-                <td align="left">
-                  <xref format="counter" target="description"/></td>
-                <td align="left">0..1</td>
-              </tr>
-              <tr>
-                <td align="left">if-feature</td>
-                <td align="left">
-                  <xref format="counter" target="if-feature"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">mandatory</td>
-                <td align="left">
-                  <xref format="counter" target="mandatory"/></td>
-                <td align="left">0..1</td>
-              </tr>
-              <tr>
-                <td align="left">must</td>
-                <td align="left">
-                  <xref format="counter" target="must"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">reference</td>
-                <td align="left">
-                  <xref format="counter" target="reference"/></td>
-                <td align="left">0..1</td>
-              </tr>
-              <tr>
-                <td align="left">status</td>
-                <td align="left">
-                  <xref format="counter" target="status"/></td>
-                <td align="left">0..1</td>
-              </tr>
-              <tr>
-                <td align="left">when</td>
-                <td align="left">
-                  <xref format="counter" target="when"/></td>
-                <td align="left">0..1</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <name>Usage Example</name>
-          <t>
-Given the following "anyxml" statement:
-          </t>
-          <artwork><![CDATA[
-  anyxml html-info;
-            ]]></artwork>
-          <t>
-The following are two valid encodings of the same anyxml value:
-          </t>
-          <artwork><![CDATA[
-   <html-info>
-     <p xmlns="http://www.w3.org/1999/xhtml">
-       This is <em>very</em> cool.
-     </p>
-   </html-info>
-
-   <html-info>
-     <x:p xmlns:x="http://www.w3.org/1999/xhtml">
-       This is <x:em>very</x:em> cool.
-     </x:p>
-   </html-info>
-            ]]></artwork>
-        </section>
-      </section>
       <section anchor="grouping">
         <name>The "grouping" Statement</name>
         <t>
@@ -5793,12 +5637,6 @@ Sections <xref target="action" format="counter"/> and
                 <td align="left">anydata</td>
                 <td align="left">
                   <xref format="counter" target="anydata"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
                 <td align="left">0..n</td>
               </tr>
               <tr>
@@ -6016,7 +5854,7 @@ Any node may get a different "config" statement.
             </li>
             <li>
               <t>
-A leaf, anydata, anyxml, or choice node may get a different
+A leaf, anydata, or choice node may get a different
 "mandatory" statement.
               </t>
             </li>
@@ -6027,7 +5865,7 @@ A container node may get a "presence" statement.
             </li>
             <li>
               <t>
-A leaf, leaf-list, list, container, anydata, or anyxml node may get
+A leaf, leaf-list, list, container, or anydata node may get
 additional "must" expressions.
               </t>
             </li>
@@ -6039,7 +5877,7 @@ A leaf-list or list node may get a different "min‑elements" or
             </li>
             <li>
               <t>
-A leaf, leaf-list, list, container, choice, case, anydata, or anyxml
+A leaf, leaf-list, list, container, choice, case, or anydata
 node may get additional "if‑feature" expressions.
               </t>
             </li>
@@ -6267,12 +6105,6 @@ If any node has a "when" statement that would evaluate to
                   <td align="left">0..n</td>
                 </tr>
                 <tr>
-                  <td align="left">anyxml</td>
-                  <td align="left">
-                    <xref format="counter" target="anyxml"/></td>
-                  <td align="left">0..n</td>
-                </tr>
-                <tr>
                   <td align="left">choice</td>
                   <td align="left">
                     <xref format="counter" target="choice"/></td>
@@ -6380,12 +6212,6 @@ If any node has a "when" statement that would evaluate to
                   <td align="left">anydata</td>
                   <td align="left">
                     <xref format="counter" target="anydata"/></td>
-                  <td align="left">0..n</td>
-                </tr>
-                <tr>
-                  <td align="left">anyxml</td>
-                  <td align="left">
-                    <xref format="counter" target="anyxml"/></td>
                   <td align="left">0..n</td>
                 </tr>
                 <tr>
@@ -6621,12 +6447,6 @@ statements for nodes in the notification tree are ignored.
                 <td align="left">0..n</td>
               </tr>
               <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
                 <td align="left">choice</td>
                 <td align="left">
                   <xref format="counter" target="choice"/></td>
@@ -6817,7 +6637,7 @@ MUST be used.  If the "augment" statement is a substatement to the
         </t>
         <t>
 If the target node is a container, list, case, input, output, or
-notification node, the "anydata", "anyxml", "container", "leaf", "list", "leaf‑list",
+notification node, the "anydata", "container", "leaf", "list", "leaf‑list",
 "uses", and "choice" statements can be used within the "augment"
 statement.
         </t>
@@ -6894,12 +6714,6 @@ data node.
                 <td align="left">anydata</td>
                 <td align="left">
                   <xref format="counter" target="anydata"/></td>
-                <td align="left">0..n</td>
-              </tr>
-              <tr>
-                <td align="left">anyxml</td>
-                <td align="left">
-                  <xref format="counter" target="anyxml"/></td>
                 <td align="left">0..n</td>
               </tr>
               <tr>
@@ -10740,11 +10554,6 @@ Comments in YANG MAY be mapped to XML comments.
               <td align="left">false</td>
             </tr>
             <tr>
-              <td align="left">anyxml</td>
-              <td align="left">name</td>
-              <td align="left">false</td>
-            </tr>
-            <tr>
               <td align="left">argument</td>
               <td align="left">name</td>
               <td align="left">false</td>
@@ -11211,7 +11020,6 @@ data-def-stmt       = container-stmt /
                       list-stmt /
                       choice-stmt /
                       anydata-stmt /
-                      anyxml-stmt /
                       uses-stmt
 
 yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
@@ -11679,8 +11487,7 @@ short-case-stmt     = choice-stmt /
                       leaf-stmt /
                       leaf-list-stmt /
                       list-stmt /
-                      anydata-stmt /
-                      anyxml-stmt
+                      anydata-stmt
 
 case-stmt           = case-keyword sep identifier-arg-str optsep
                       (";" /
@@ -11695,20 +11502,6 @@ case-stmt           = case-keyword sep identifier-arg-str optsep
                        "}") stmtsep
 
 anydata-stmt        = anydata-keyword sep identifier-arg-str optsep
-                      (";" /
-                       "{" stmtsep
-                           ;; these stmts can appear in any order
-                           [when-stmt]
-                           *if-feature-stmt
-                           *must-stmt
-                           [config-stmt]
-                           [mandatory-stmt]
-                           [status-stmt]
-                           [description-stmt]
-                           [reference-stmt]
-                        "}") stmtsep
-
-anyxml-stmt         = anyxml-keyword sep identifier-arg-str optsep
                       (";" /
                        "{" stmtsep
                            ;; these stmts can appear in any order
@@ -11932,7 +11725,6 @@ unknown-statement   = prefix ":" identifier [sep string] optsep
 
 yang-stmt           = action-stmt /
                       anydata-stmt /
-                      anyxml-stmt /
                       argument-stmt /
                       augment-stmt /
                       base-stmt /
@@ -12108,7 +11900,6 @@ rel-path-keyexpr    = 1*(".." *WSP "/" *WSP)
 ;; statement keywords
 action-keyword           = %s"action"
 anydata-keyword          = %s"anydata"
-anyxml-keyword           = %s"anyxml"
 argument-keyword         = %s"argument"
 augment-keyword          = %s"augment"
 base-keyword             = %s"base"

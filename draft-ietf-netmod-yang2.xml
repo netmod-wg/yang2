@@ -98,7 +98,7 @@
           <li>Each "NETCONF XML Example" in <xref target="lang-over"/> (Language Overview)
           now has a matching "RESTCONF JSON Example".</li>
           <li>Added a "Protocols Mappings" section.</li>
-          <li>Removed the "anyxml" statement.</li>
+          <li>Removed the "anyxml" statement.  Imports alias "anyxml" to "anydata".</li>
         </ol>
       </section>
     </section>
@@ -2969,6 +2969,11 @@ module they are taken.
           <t>
 Multiple revisions of the same module can be imported, provided that
 different prefixes are used.
+          </t>
+          <t>
+If a yang-version 2.0 module imports a 1.0 or 1.1 module containing the
+`anyxml` statement, the `anyxml` statement  is aliased to and processed
+as an `anydata` statement.
           </t>
           <table>
             <name>The import's Substatements</name>

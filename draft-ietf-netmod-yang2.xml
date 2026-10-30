@@ -28,7 +28,7 @@
     <abstract>
       <t>
   YANG is a data modeling language used to model configuration data,
-  state data, Remote Procedure Calls, and notifications for network
+  operational state data, Remote Procedure Calls, and notifications for network
   management protocols. This document describes the syntax and
   semantics of version 2.0 of the YANG language.  YANG version 2.0 is
   a major release of the YANG language, addressing issues found in
@@ -195,7 +195,7 @@ data tree.  One of container, leaf, leaf-list, list, and anydata.
         <li>
           <t>
 data tree: An instantiated tree of any data modeled with YANG, e.g.,
-configuration data, state data, combined configuration and state
+configuration data, operational state data, combined configuration and state
 data, RPC or action input, RPC or action output, or notification.
           </t>
         </li>
@@ -383,14 +383,9 @@ space of its data type.
         </li>
       </ul>
       <t>
-The following terms are defined in <xref target="RFC6241"/>:
+The following terms are defined in <xref target="RFC8342"/>:
       </t>
       <ul spacing="normal">
-        <li>
-          <t>
-configuration data
-          </t>
-        </li>
         <li>
           <t>
 configuration datastore
@@ -401,9 +396,24 @@ configuration datastore
 datastore
           </t>
         </li>
+      </ul>
+      <t>
+The following terms are defined in <xref target="RFC6244"/>:
+      </t>
+      <ul spacing="normal">
         <li>
           <t>
-state data
+configuration data
+          </t>
+        </li>
+        <li>
+          <t>
+operational state data
+          </t>
+        </li>
+        <li>
+          <t>
+statistical data
           </t>
         </li>
       </ul>
@@ -442,7 +452,7 @@ also be used to model file data <xref target="RFC9195"/>.
         </t>
         <t>
 A YANG module defines hierarchies of data that can be used
-for protocol operations including configuration, state data,
+for protocol operations including configuration, operational state data,
 RPCs, and notifications.  This allows a complete description of all
 data sent between a protocol client and server.
         </t>
@@ -814,12 +824,12 @@ These statements are combined to define the module:
         <section>
           <name>Configuration and State Data</name>
           <t>
-YANG can model state data, as well as configuration data, based on the
+YANG can model operational state data, as well as configuration data, based on the
 "config" statement.  When a node is tagged with "config false", its
-subhierarchy is flagged as state data.  If it is tagged with "config
+subhierarchy is flagged as operational state data.  If it is tagged with "config
 true", its subhierarchy is flagged as configuration data.  Parent
 containers, lists, and key leafs are reported also, giving the context
-for the state data.
+for the operational state data.
           </t>
           <t>
 In this example, two leafs are defined for each interface, a
@@ -2395,7 +2405,7 @@ children.
             <li>
               <t>
 If the XPath expression is defined in a substatement to a data node
-that represents state data, the accessible tree is all state
+that represents operational state data, the accessible tree is all state
 data in the server, and the running configuration datastore.  The
 root node has all top-level data nodes in all modules as children.
               </t>
@@ -2404,7 +2414,7 @@ root node has all top-level data nodes in all modules as children.
               <t>
 If the XPath expression is defined in a substatement to a
 "notification" statement, the accessible tree is the notification
-instance, all state data in the server, and the running
+instance, all operational state data in the server, and the running
 configuration datastore.
 If the notification is defined on the top level in a module, then
 the root node has the node representing the notification being
@@ -2417,7 +2427,7 @@ as children.
               <t>
 If the XPath expression is defined in a substatement to an "input"
 statement in an "rpc" or "action" statement, the accessible tree is
-the RPC or action operation instance, all state data in the server,
+the RPC or action operation instance, all operational state data in the server,
 and the running configuration datastore.  The root node has
 top-level data nodes in all modules as children.  Additionally, for
 an RPC, the root node also has the node representing the RPC
@@ -2430,7 +2440,7 @@ children.
               <t>
 If the XPath expression is defined in a substatement to an "output"
 statement in an "rpc" or "action" statement, the accessible tree is
-the RPC or action operation instance, all state data in the server,
+the RPC or action operation instance, all operational state data in the server,
 and the running configuration datastore.  The root node has
 top-level data nodes in all modules as children.  Additionally, for
 an RPC, the root node also has the node representing the RPC
@@ -4614,7 +4624,7 @@ of the strings "system" or "user".  If not present,
 ordering defaults to "system".
           </t>
           <t>
-This statement is ignored if the list represents state data, RPC
+This statement is ignored if the list represents operational state data, RPC
 output parameters, or notification content.
           </t>
           <t>
@@ -7660,8 +7670,8 @@ configuration.  Data nodes representing configuration are part of
 configuration datastores.
           </t>
           <t>
-If "config" is "false", the definition represents state data.  Data
-nodes representing state data are not part of configuration datastores.
+If "config" is "false", the definition represents operational state data.  Data
+nodes representing operational state data are not part of configuration datastores.
           </t>
           <t>
 If "config" is not specified, the default is the same as the parent
@@ -7860,8 +7870,8 @@ a valid configuration data tree.
           </li>
           <li>
             <t>
-If the constraint is defined on state data, it MUST be true in a
-valid state data tree.
+If the constraint is defined on operational state data, it MUST be true in a
+valid operational state data tree.
             </t>
           </li>
           <li>
@@ -10350,7 +10360,7 @@ A new "case" statement may be added.
         </li>
         <li>
           <t>
-A node that represented state data may be changed to represent
+A node that represented operational state data may be changed to represent
 configuration, provided it is not mandatory (<xref target="terminology"/>).
           </t>
         </li>
@@ -12276,9 +12286,9 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8342.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8525.xml"/>
         <reference anchor="XML-NAMES" target="http://www.w3.org/TR/2009/REC-xml-names-20091208">
           <front>
@@ -12356,6 +12366,8 @@ compromised.
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6244.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
